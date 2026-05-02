@@ -69,7 +69,7 @@ export default function HeroSection() {
         >
           Saigon from the<br />
           <motion.span
-            className="text-terracotta italic"
+            className="text-cream italic"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.9 }}

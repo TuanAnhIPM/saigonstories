@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.docx
+website/node_modules/
+website/.next/
+website/.env.local

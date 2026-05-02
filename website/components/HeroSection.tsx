@@ -61,7 +61,7 @@ export default function HeroSection() {
 
         {/* Headline — heavier weight, tighter */}
         <motion.h1
-          className="font-heading text-white text-5xl md:text-7xl font-black leading-[1.1] mb-6 drop-shadow-lg"
+          className="font-heading text-cream text-5xl md:text-7xl font-black leading-[1.1] mb-6 drop-shadow-lg"
           style={{ textShadow: '0 2px 20px rgba(0,0,0,0.4)' }}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}

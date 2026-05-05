@@ -33,7 +33,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
             <ArrowLeft size={14} /> All Tours
           </Link>
           <div className="flex items-center gap-3 mb-3">
-            <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1 rounded-full">★ Highlight Tour</span>
+            <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1 rounded-full">{tour.badge}</span>
           </div>
           <h1 className="font-heading text-cream text-4xl md:text-6xl font-bold mb-3">{tour.title}</h1>
           <p className="text-white/90 text-lg max-w-2xl">{tour.tagline}</p>

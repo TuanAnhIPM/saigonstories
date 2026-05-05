@@ -4,6 +4,7 @@ import { Clock, ArrowRight } from 'lucide-react'
 import { tours } from '@/lib/tours'
 import HeroSection from '@/components/HeroSection'
 import StatsBar from '@/components/StatsBar'
+import TrustBar from '@/components/TrustBar'
 import AnimatedSection from '@/components/AnimatedSection'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
@@ -52,6 +53,9 @@ export default function HomePage() {
       {/* ── Hero ── */}
       <HeroSection />
 
+      {/* ── Trust bar ── */}
+      <TrustBar />
+
       {/* ── Stats bar ── */}
       <StatsBar />
 
@@ -83,7 +87,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-linear-to-t from-espresso/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 left-4">
                     <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
-                      ★ Highlight Tour
+                      {tour.badge}
                     </span>
                   </div>
                 </div>

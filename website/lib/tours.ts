@@ -25,6 +25,7 @@ export type Tour = {
   shortTitle: string
   category: TourCategory
   tagline: string
+  badge: string
   duration: string
   departureTimes: string[]
   heroImage: string
@@ -46,6 +47,7 @@ export const tours: Tour[] = [
     title: '10 Food by Scooter',
     shortTitle: 'Food by Scooter',
     category: 'food',
+    badge: '🔥 Best Seller',
     tagline: 'Taste Saigon\'s best street food from the back of a scooter',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '01:00 PM', '05:30 PM', '06:00 PM'],
@@ -95,6 +97,7 @@ export const tours: Tour[] = [
     title: 'Evening Walking Food Tour',
     shortTitle: 'Walking Food Tour',
     category: 'food',
+    badge: '⭐ Top Rated',
     tagline: 'Stroll through Saigon\'s most atmospheric food streets at golden hour',
     duration: '3.5 – 4 hours',
     departureTimes: ['05:30 PM', '06:00 PM', '06:30 PM'],
@@ -146,6 +149,7 @@ export const tours: Tour[] = [
     title: 'History & Culture Tour',
     shortTitle: 'History & Culture',
     category: 'history',
+    badge: '🏛 Local Favourite',
     tagline: 'Hidden apartments, weapon bunkers, flower markets — Saigon\'s layers of history come alive',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '08:30 AM', '09:00 AM', '12:30 PM', '01:00 PM', '05:00 PM', '05:30 PM'],
@@ -225,6 +229,7 @@ export const tours: Tour[] = [
     title: '7 Taste & Sightseeing',
     shortTitle: '7 Taste & Sightseeing',
     category: 'combo',
+    badge: '✨ Editor\'s Pick',
     tagline: 'Seven iconic bites and a city ride — the perfect Saigon taster',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '01:00 PM', '05:30 PM', '06:00 PM'],

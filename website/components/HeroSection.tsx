@@ -3,9 +3,16 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 
 const tagline = ['ride', 'taste', 'explore']
+
+const heroImages = [
+  { src: '/images/history-tour/IMG_3444.JPG', alt: 'Group of guests at a Saigon historical landmark' },
+  { src: '/images/food-tour/IMG_3452.JPG', alt: 'Couple enjoying Vietnamese noodle soup' },
+  { src: '/images/food-tour/IMG_3449.JPG', alt: 'Guests at iconic bánh mì stall' },
+  { src: '/images/history-tour/e4fb2704-b390-4437-9a6a-a5de50823241.jpg', alt: 'Scooter ride through Saigon at night' },
+]
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null)
@@ -14,6 +21,7 @@ export default function HeroSection() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0])
 
   const [activeTag, setActiveTag] = useState(0)
+  const [activeImage, setActiveImage] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -22,17 +30,36 @@ export default function HeroSection() {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % heroImages.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section ref={ref} className="relative h-screen min-h-150 flex items-center justify-center overflow-hidden">
+      {/* Image carousel */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <Image
-          src="/images/history-tour/IMG_3444.JPG"
-          alt="Group of guests at a Saigon historical landmark"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center scale-110"
-        />
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={activeImage}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+          >
+            <Image
+              src={heroImages[activeImage].src}
+              alt={heroImages[activeImage].alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center scale-110"
+            />
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
 
       {/* Uniform base darkens the whole image enough for text contrast */}
@@ -61,7 +88,7 @@ export default function HeroSection() {
           ))}
         </div>
 
-        {/* Headline — heavier weight, tighter */}
+        {/* Headline */}
         <motion.h1
           className="font-heading text-cream text-5xl md:text-7xl font-black leading-[1.1] mb-6 drop-shadow-lg"
           style={{ textShadow: '0 2px 24px rgba(0,0,0,0.8), 0 4px 48px rgba(0,0,0,0.6)' }}
@@ -80,7 +107,7 @@ export default function HeroSection() {
           </motion.span>
         </motion.h1>
 
-        {/* Subheading — white, full opacity, semibold */}
+        {/* Subheading */}
         <motion.p
           className="text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ textShadow: '0 2px 16px rgba(0,0,0,0.9), 0 4px 32px rgba(0,0,0,0.7)' }}
@@ -112,6 +139,20 @@ export default function HeroSection() {
           </Link>
         </motion.div>
       </motion.div>
+
+      {/* Carousel dots */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {heroImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActiveImage(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-400 ${
+              i === activeImage ? 'bg-white w-6' : 'bg-white/50 w-2'
+            }`}
+          />
+        ))}
+      </div>
 
       {/* Scroll indicator */}
       <motion.div

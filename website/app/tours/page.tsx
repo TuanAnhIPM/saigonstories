@@ -43,7 +43,7 @@ export default function ToursPage() {
                 <div className="absolute inset-0 bg-linear-to-t from-espresso/70 to-transparent" />
                 <div className="absolute top-4 left-4">
                   <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
-                    ★ Highlight Tour
+                    {tour.badge}
                   </span>
                 </div>
                 <div className="absolute bottom-4 right-4">

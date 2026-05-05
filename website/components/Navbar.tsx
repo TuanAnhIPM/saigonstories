@@ -8,9 +8,7 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 const tourDropdown = [
   { href: '/tours/food-tour-scooter', label: '10 Food by Scooter' },
   { href: '/tours/walking-food-tour', label: 'Evening Walking Food Tour' },
-  { href: '/tours/history-culture-morning', label: 'Morning History & Culture' },
-  { href: '/tours/history-culture-afternoon', label: 'Afternoon History & Culture' },
-  { href: '/tours/history-culture-evening', label: 'Evening History & Culture' },
+  { href: '/tours/history-culture', label: 'History & Culture' },
   { href: '/tours/taste-sightseeing', label: '7 Taste & Sightseeing' },
 ]
 

@@ -11,7 +11,7 @@ import FAQ from '@/components/FAQ'
 const featuredTours = [
   tours.find((t) => t.slug === 'food-tour-scooter')!,
   tours.find((t) => t.slug === 'walking-food-tour')!,
-  tours.find((t) => t.slug === 'history-culture-evening')!,
+  tours.find((t) => t.slug === 'history-culture')!,
 ]
 
 const galleryImages = [

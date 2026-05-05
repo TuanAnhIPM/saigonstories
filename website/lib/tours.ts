@@ -13,6 +13,12 @@ export type TourStop = {
   ingredients?: string
 }
 
+export type TimeSlot = {
+  label: string
+  departureTimes: string[]
+  stops: TourStop[]
+}
+
 export type Tour = {
   slug: string
   title: string
@@ -27,6 +33,7 @@ export type Tour = {
   groupDiscounts: string[]
   highlights: string[]
   stops: TourStop[]
+  timeSlots?: TimeSlot[]
   inclusions: string[]
   exclusions: string[]
   note?: string
@@ -63,66 +70,16 @@ export const tours: Tour[] = [
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      {
-        number: 1,
-        title: 'Grilled Banana with Sticky Rice',
-        description: 'A classic street-side start — sweet, fragrant and unmistakably Saigon.',
-        ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds',
-      },
-      {
-        number: 2,
-        title: 'Fish or Pork Noodle Soup',
-        description: 'A soul-warming bowl straight from a family recipe passed down for generations.',
-        ingredients: 'Rice noodles, fresh herbs, bean sprouts, spring onion. Vegetarian option available.',
-      },
-      {
-        number: 3,
-        title: 'Bánh Xèo — Vietnamese Crispy Pancake',
-        description: 'Sizzling hot, golden and impossible to eat quietly.',
-        ingredients: 'Pork, shrimp, mung bean, bean sprouts, turmeric rice-flour crepe',
-      },
-      {
-        number: 4,
-        title: 'Deep-Fried or Fresh Spring Rolls',
-        description: 'Two versions, one unforgettable combo — crispy or cool and fresh.',
-        ingredients: 'Rice paper, pork, white onions, pepper — fried or fresh',
-      },
-      {
-        number: 5,
-        title: 'Vietnamese Pizza',
-        description: 'Saigon\'s legendary street snack — a flavour explosion on a single cracker.',
-        ingredients: 'Rice paper, egg, minced pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
-      },
-      {
-        number: 6,
-        title: 'Grilled Beef with Betel Leaves',
-        description: 'Aromatic, smoky and wrapped in something you\'ve never tasted before.',
-        ingredients: 'Ground beef, lemongrass, betel leaves, pickle, BBQ sauce',
-      },
-      {
-        number: 7,
-        title: 'Sweet Potato Balloons',
-        description: 'Crispy, puffed and addictive — Saigon\'s favourite snack in one bite.',
-        ingredients: 'Sweet potato, tapioca flour',
-      },
-      {
-        number: 8,
-        title: 'Rice Paper Cracker',
-        description: 'Paper-thin, grilled and quietly perfect.',
-        ingredients: 'Thin rice paper, coconut milk',
-      },
-      {
-        number: 9,
-        title: 'Bánh Mì',
-        description: 'The icon. Vietnam\'s greatest contribution to the sandwich world.',
-        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, fresh herbs',
-      },
-      {
-        number: 10,
-        title: 'Dessert',
-        description: 'A sweet finale the Saigon way.',
-        ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly',
-      },
+      { number: 1, title: 'Grilled Banana with Sticky Rice', description: 'A classic street-side start — sweet, fragrant and unmistakably Saigon.', ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds' },
+      { number: 2, title: 'Fish or Pork Noodle Soup', description: 'A soul-warming bowl straight from a family recipe passed down for generations.', ingredients: 'Rice noodles, fresh herbs, bean sprouts, spring onion. Vegetarian option available.' },
+      { number: 3, title: 'Bánh Xèo — Vietnamese Crispy Pancake', description: 'Sizzling hot, golden and impossible to eat quietly.', ingredients: 'Pork, shrimp, mung bean, bean sprouts, turmeric rice-flour crepe' },
+      { number: 4, title: 'Deep-Fried or Fresh Spring Rolls', description: 'Two versions, one unforgettable combo — crispy or cool and fresh.', ingredients: 'Rice paper, pork, white onions, pepper — fried or fresh' },
+      { number: 5, title: 'Vietnamese Pizza', description: 'Saigon\'s legendary street snack — a flavour explosion on a single cracker.', ingredients: 'Rice paper, egg, minced pork, sausage, dried shrimp, mayo, chilli, tamarind sauce' },
+      { number: 6, title: 'Grilled Beef with Betel Leaves', description: 'Aromatic, smoky and wrapped in something you\'ve never tasted before.', ingredients: 'Ground beef, lemongrass, betel leaves, pickle, BBQ sauce' },
+      { number: 7, title: 'Sweet Potato Balloons', description: 'Crispy, puffed and addictive — Saigon\'s favourite snack in one bite.', ingredients: 'Sweet potato, tapioca flour' },
+      { number: 8, title: 'Rice Paper Cracker', description: 'Paper-thin, grilled and quietly perfect.', ingredients: 'Thin rice paper, coconut milk' },
+      { number: 9, title: 'Bánh Mì', description: 'The icon. Vietnam\'s greatest contribution to the sandwich world.', ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, fresh herbs' },
+      { number: 10, title: 'Dessert', description: 'A sweet finale the Saigon way.', ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly' },
     ],
     inclusions: [
       'Raincoat & helmet',
@@ -163,66 +120,16 @@ export const tours: Tour[] = [
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      {
-        number: 1,
-        title: 'Noodle Soup — Fish, Pork or Vegetarian',
-        description: 'A flavourful bowl to ease you into the evening.',
-        ingredients: 'Rice noodles, broth, fresh herbs, bean sprouts',
-      },
-      {
-        number: 2,
-        title: 'Bánh Xèo — Crispy Rice Pancake',
-        description: 'Sizzling golden crepe, best eaten straight off the pan.',
-        ingredients: 'Shrimp, pork, bean sprouts, turmeric rice-flour batter',
-      },
-      {
-        number: 3,
-        title: 'Nem Nướng — Grilled Pork Sausage',
-        description: 'Smoky, fragrant and wrapped in fresh herbs.',
-        ingredients: 'Grilled pork sausage, rice noodles, fresh herbs',
-      },
-      {
-        number: 4,
-        title: 'Spring Rolls',
-        description: 'Crispy or fresh — both versions are essential Saigon.',
-        ingredients: 'Pork, rice paper — deep-fried or fresh summer roll',
-      },
-      {
-        number: 5,
-        title: 'Vietnamese Pizza',
-        description: 'The beloved street snack — loaded and irresistible.',
-        ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
-      },
-      {
-        number: 6,
-        title: 'Grilled Beef with Betel Leaves',
-        description: 'Fragrant ground beef with a char that lingers.',
-        ingredients: 'Ground beef, lemongrass, betel leaves, BBQ sauce',
-      },
-      {
-        number: 7,
-        title: 'Sweet Potato Balloons',
-        description: 'Crispy puffed snacks you\'ll want to take home.',
-        ingredients: 'Sweet potato, tapioca flour',
-      },
-      {
-        number: 8,
-        title: 'Rice Paper Cracker',
-        description: 'Light, thin and grilled to perfection.',
-        ingredients: 'Rice paper, coconut milk',
-      },
-      {
-        number: 9,
-        title: 'Bánh Mì',
-        description: 'Vietnam\'s legendary baguette — the perfect night cap.',
-        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs',
-      },
-      {
-        number: 10,
-        title: 'Dessert',
-        description: 'A sweet close to a memorable evening.',
-        ingredients: 'Caramel flan, sweet soup, or coconut jelly',
-      },
+      { number: 1, title: 'Noodle Soup — Fish, Pork or Vegetarian', description: 'A flavourful bowl to ease you into the evening.', ingredients: 'Rice noodles, broth, fresh herbs, bean sprouts' },
+      { number: 2, title: 'Bánh Xèo — Crispy Rice Pancake', description: 'Sizzling golden crepe, best eaten straight off the pan.', ingredients: 'Shrimp, pork, bean sprouts, turmeric rice-flour batter' },
+      { number: 3, title: 'Nem Nướng — Grilled Pork Sausage', description: 'Smoky, fragrant and wrapped in fresh herbs.', ingredients: 'Grilled pork sausage, rice noodles, fresh herbs' },
+      { number: 4, title: 'Spring Rolls', description: 'Crispy or fresh — both versions are essential Saigon.', ingredients: 'Pork, rice paper — deep-fried or fresh summer roll' },
+      { number: 5, title: 'Vietnamese Pizza', description: 'The beloved street snack — loaded and irresistible.', ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce' },
+      { number: 6, title: 'Grilled Beef with Betel Leaves', description: 'Fragrant ground beef with a char that lingers.', ingredients: 'Ground beef, lemongrass, betel leaves, BBQ sauce' },
+      { number: 7, title: 'Sweet Potato Balloons', description: 'Crispy puffed snacks you\'ll want to take home.', ingredients: 'Sweet potato, tapioca flour' },
+      { number: 8, title: 'Rice Paper Cracker', description: 'Light, thin and grilled to perfection.', ingredients: 'Rice paper, coconut milk' },
+      { number: 9, title: 'Bánh Mì', description: 'Vietnam\'s legendary baguette — the perfect night cap.', ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs' },
+      { number: 10, title: 'Dessert', description: 'A sweet close to a memorable evening.', ingredients: 'Caramel flan, sweet soup, or coconut jelly' },
     ],
     inclusions: [
       'Grab car transfer to the food court',
@@ -235,13 +142,13 @@ export const tours: Tour[] = [
     minGuests: 1,
   },
   {
-    slug: 'history-culture-morning',
-    title: 'Morning History & Culture',
+    slug: 'history-culture',
+    title: 'History & Culture Tour',
     shortTitle: 'History & Culture',
     category: 'history',
-    tagline: 'Start your day like a local — coffee, markets and layers of Saigon\'s past',
+    tagline: 'Hidden apartments, weapon bunkers, flower markets — Saigon\'s layers of history come alive',
     duration: '3.5 – 4 hours',
-    departureTimes: ['08:00 AM', '08:30 AM', '09:00 AM'],
+    departureTimes: ['08:00 AM', '08:30 AM', '09:00 AM', '12:30 PM', '01:00 PM', '05:00 PM', '05:30 PM'],
     heroImage: '/images/history-tour/IMG_3444.JPG',
     galleryImages: [
       '/images/history-tour/IMG_2708.JPG',
@@ -263,11 +170,46 @@ export const tours: Tour[] = [
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      { number: 1, title: 'Oldest Apartment in District 3 & Bàn Cờ Wet Market', description: 'Built in 1968 during the Vietnam War by the Americans. Hear stories of everyday life inside, then plunge into the hectic energy of the wet market. Try tropical fruits depending on the season.' },
-      { number: 2, title: 'Hidden 80-Year-Old Local Coffee Shop', description: 'Tucked away in a narrow alley, this café has been serving Vietnamese coffee the traditional way for nearly eight decades. Experience a true local morning ritual.' },
-      { number: 3, title: 'Weapon Bunker', description: 'Beneath this house, the Saigon Commandos dug tunnels more than 50 years ago to hide weapons and plan the 1968 Tết Offensive attack on the Independence Palace.' },
+      { number: 1, title: 'Oldest Apartment in District 3 & Bàn Cờ Wet Market', description: 'Built in 1968 during the Vietnam War by the Americans. Hear stories of everyday life inside, then plunge into the hectic energy of the wet market.' },
+      { number: 2, title: 'Hidden 80-Year-Old Local Coffee Shop', description: 'Tucked away in a narrow alley, this café has been serving Vietnamese coffee the traditional way for nearly eight decades.' },
+      { number: 3, title: 'Weapon Bunker', description: 'Beneath this house, the Saigon Commandos dug tunnels more than 50 years ago to hide weapons and plan the 1968 Tết Offensive.' },
       { number: 4, title: 'Hồ Thị Kỷ Flower Market', description: 'The largest wholesale flower market in Ho Chi Minh City — known as "Little Đà Lạt." Founded officially in 1970, it overflows with thousands of vibrant blooms.' },
-      { number: 5, title: 'Thiên Hậu Temple, Chinatown', description: 'Drive through Cholon and visit this 18th-century temple, a spiritual centre for the Chinese community of Saigon. Incense spirals, intricate carvings and a living tradition.' },
+      { number: 5, title: 'Thiên Hậu Temple, Chinatown', description: 'Drive through Cholon and visit this 18th-century temple, a spiritual centre for the Chinese community of Saigon.' },
+    ],
+    timeSlots: [
+      {
+        label: 'Morning',
+        departureTimes: ['08:00 AM', '08:30 AM', '09:00 AM'],
+        stops: [
+          { number: 1, title: 'Oldest Apartment in District 3 & Bàn Cờ Wet Market', description: 'Built in 1968 during the Vietnam War by the Americans. Hear stories of everyday life inside, then plunge into the hectic energy of the wet market. Try tropical fruits depending on the season.' },
+          { number: 2, title: 'Hidden 80-Year-Old Local Coffee Shop', description: 'Tucked away in a narrow alley, this café has been serving Vietnamese coffee the traditional way for nearly eight decades. Experience a true local morning ritual.' },
+          { number: 3, title: 'Weapon Bunker', description: 'Beneath this house, the Saigon Commandos dug tunnels more than 50 years ago to hide weapons and plan the 1968 Tết Offensive attack on the Independence Palace.' },
+          { number: 4, title: 'Hồ Thị Kỷ Flower Market', description: 'The largest wholesale flower market in Ho Chi Minh City — known as "Little Đà Lạt." Founded officially in 1970, it overflows with thousands of vibrant blooms.' },
+          { number: 5, title: 'Thiên Hậu Temple, Chinatown', description: 'Drive through Cholon and visit this 18th-century temple, a spiritual centre for the Chinese community of Saigon. Incense spirals, intricate carvings and a living tradition.' },
+        ],
+      },
+      {
+        label: 'Afternoon',
+        departureTimes: ['12:30 PM', '01:00 PM'],
+        stops: [
+          { number: 1, title: 'Oldest Apartment in District 3', description: 'Built during the Vietnam War in 1968 by the Americans — hear the stories of the people who have called it home for over half a century.' },
+          { number: 2, title: 'Hidden Local Coffee Shop', description: 'Almost 80 years old and hidden in a quiet alley. Sit down, sip Vietnamese coffee and spend a quiet afternoon like a Saigon local.' },
+          { number: 3, title: 'Weapon Bunker', description: 'Beneath this ordinary house, the Saigon Commandos dug tunnels to hide weapons in preparation for the bold 1968 Tết Offensive.' },
+          { number: 4, title: 'Hồ Thị Kỷ Flower Market & Food Street', description: 'Browse the city\'s most spectacular flower market, then head to the famous food street — over 100 stalls serving from 3 PM until midnight.' },
+          { number: 5, title: 'Chinatown from the Scooter', description: 'A slow ride through the old Chinese districts — Districts 5, 6 and 11 — taking in the faded grandeur and living culture of Saigon\'s Cholon.' },
+        ],
+      },
+      {
+        label: 'Evening',
+        departureTimes: ['05:00 PM', '05:30 PM'],
+        stops: [
+          { number: 1, title: 'Oldest Apartment in District 3', description: 'The 1968 American-built apartment at dusk — hear stories of the people who have lived here through war and peace.' },
+          { number: 2, title: 'Vietnamese Sweet Soup or Fruit Smoothie', description: 'Sit on a tiny plastic chair, sip a local sweet soup or smoothie, and feel the city\'s evening pace.' },
+          { number: 3, title: 'The Venerable Thích Quảng Đức Monument', description: 'Visit the monument commemorating the Buddhist monk who self-immolated in 1963 to protest political repression — a defining moment of modern Vietnamese history.' },
+          { number: 4, title: 'Hồ Thị Kỷ Flower Market & Food Street', description: 'The flower market glows at night. Then on to the food street — 100+ stalls, buzzing from 3 PM to 11 PM, famous for its banana crackers.' },
+          { number: 5, title: 'Saigon by Night on Scooter', description: 'The city\'s most famous street comes alive after dark. Hold on and feel the pulse of Saigon as the lights blur past.' },
+        ],
+      },
     ],
     inclusions: [
       'Raincoat & helmet',
@@ -276,95 +218,7 @@ export const tours: Tour[] = [
       'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
     ],
     exclusions: ['Personal expenses', 'Tips for guide & driver'],
-    note: 'Stops may change depending on your booking time.',
-  },
-  {
-    slug: 'history-culture-afternoon',
-    title: 'Afternoon History & Culture',
-    shortTitle: 'History & Culture',
-    category: 'history',
-    tagline: 'Markets, bunkers, flower streets — Saigon\'s hidden afternoon rhythm',
-    duration: '3.5 – 4 hours',
-    departureTimes: ['12:30 PM', '01:00 PM'],
-    heroImage: '/images/history-tour/IMG_3431.JPG',
-    galleryImages: [
-      '/images/history-tour/IMG_3433.JPG',
-      '/images/history-tour/IMG_3436.JPG',
-      '/images/history-tour/IMG_3437.JPG',
-      '/images/history-tour/IMG_3445.JPG',
-      '/images/history-tour/IMG_3454.JPG',
-      '/images/history-tour/IMG_3503.JPG',
-    ],
-    pricing: [
-      { group: '1–4 guests', price: 33 },
-      { group: '11+ guests', price: 28, note: '15% group discount' },
-    ],
-    groupDiscounts: ['15% discount for groups of 11+'],
-    highlights: [
-      'The city\'s best-kept secrets',
-      'English-speaking guide & driver',
-      '1 meal included',
-      'Free hotel pickup (Districts 1, 3 & 4)',
-    ],
-    stops: [
-      { number: 1, title: 'Oldest Apartment in District 3', description: 'Built during the Vietnam War in 1968 by the Americans — hear the stories of the people who have called it home for over half a century.' },
-      { number: 2, title: 'Hidden Local Coffee Shop', description: 'Almost 80 years old and hidden in a quiet alley. Sit down, sip Vietnamese coffee and spend a quiet afternoon like a Saigon local.' },
-      { number: 3, title: 'Weapon Bunker', description: 'Beneath this ordinary house, the Saigon Commandos dug tunnels to hide weapons in preparation for the bold 1968 Tết Offensive.' },
-      { number: 4, title: 'Hồ Thị Kỷ Flower Market & Food Street', description: 'Browse the city\'s most spectacular flower market, then head to the famous food street — over 100 stalls serving from 3 PM until midnight.' },
-      { number: 5, title: 'Chinatown from the Scooter', description: 'A slow ride through the old Chinese districts — Districts 5, 6 and 11 — taking in the faded grandeur and living culture of Saigon\'s Cholon.' },
-    ],
-    inclusions: [
-      'Raincoat & helmet',
-      'English-speaking guide and driver',
-      '1 meal included on the tour',
-      'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
-    ],
-    exclusions: ['Personal expenses', 'Tips for guide & driver'],
-    note: 'Stops may change depending on your booking time.',
-  },
-  {
-    slug: 'history-culture-evening',
-    title: 'Evening History & Culture',
-    shortTitle: 'History & Culture',
-    category: 'history',
-    tagline: 'As dusk falls, Saigon\'s stories come alive — ride into the night',
-    duration: '3.5 – 4 hours',
-    departureTimes: ['05:00 PM', '05:30 PM'],
-    heroImage: '/images/history-tour/e4fb2704-b390-4437-9a6a-a5de50823241.jpg',
-    galleryImages: [
-      '/images/history-tour/IMG_3444.JPG',
-      '/images/history-tour/IMG_3445.JPG',
-      '/images/history-tour/IMG_3454.JPG',
-      '/images/history-tour/IMG_3503.JPG',
-      '/images/history-tour/IMG_2708.JPG',
-      '/images/history-tour/IMG_2729.JPG',
-    ],
-    pricing: [
-      { group: '1–4 guests', price: 33 },
-      { group: '11+ guests', price: 28, note: '15% group discount' },
-    ],
-    groupDiscounts: ['15% discount for groups of 11+'],
-    highlights: [
-      'Saigon lit up at dusk',
-      'English-speaking guide & driver',
-      '1 meal included',
-      'Free hotel pickup (Districts 1, 3 & 4)',
-    ],
-    stops: [
-      { number: 1, title: 'Oldest Apartment in District 3', description: 'The 1968 American-built apartment at dusk — hear stories of the people who have lived here through war and peace.' },
-      { number: 2, title: 'Vietnamese Sweet Soup or Fruit Smoothie', description: 'Sit on a tiny plastic chair, sip a local sweet soup or smoothie, and feel the city\'s evening pace.' },
-      { number: 3, title: 'The Venerable Thích Quảng Đức Monument', description: 'Visit the monument commemorating the Buddhist monk who self-immolated in 1963 to protest political repression — a defining moment of modern Vietnamese history.' },
-      { number: 4, title: 'Hồ Thị Kỷ Flower Market & Food Street', description: 'The flower market glows at night. Then on to the food street — 100+ stalls, buzzing from 3 PM to 11 PM, famous for its banana crackers.' },
-      { number: 5, title: 'Saigon by Night on Scooter', description: 'The city\'s most famous street comes alive after dark. Hold on and feel the pulse of Saigon as the lights blur past.' },
-    ],
-    inclusions: [
-      'Raincoat & helmet',
-      'English-speaking guide and driver',
-      '1 meal included on the tour',
-      'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
-    ],
-    exclusions: ['Personal expenses', 'Tips for guide & driver'],
-    note: 'Stops may change depending on your booking time.',
+    note: 'Stops vary slightly by time slot. Let us know your preferred time when booking.',
   },
   {
     slug: 'taste-sightseeing',
@@ -395,53 +249,14 @@ export const tours: Tour[] = [
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      {
-        number: 1,
-        title: 'Grilled Banana with Sticky Rice',
-        description: 'A perfect opening bite.',
-        ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds',
-      },
-      {
-        number: 2,
-        title: 'Noodle Soup',
-        description: 'A bowl of Saigon\'s soul food.',
-        ingredients: 'Fish, pork or vegetarian broth, rice noodles, fresh herbs',
-      },
-      {
-        number: 3,
-        title: 'Vietnamese Pizza',
-        description: 'A flavour explosion on a single cracker.',
-        ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
-      },
-      {
-        number: 4,
-        title: 'Grilled Beef with Betel Leaves',
-        description: 'Fragrant ground beef wrapped in betel leaves or lemongrass.',
-        ingredients: 'Ground beef, betel leaves, lemongrass, BBQ sauce',
-      },
-      {
-        number: 5,
-        title: 'Sweet Potato Balloons',
-        description: 'Light, crispy puffs of sweet potato.',
-        ingredients: 'Sweet potato, tapioca flour',
-      },
-      {
-        number: 6,
-        title: 'Bánh Mì',
-        description: 'Vietnam\'s gift to the world.',
-        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs',
-      },
-      {
-        number: 7,
-        title: 'Dessert',
-        description: 'Caramel flan, sweet soup or coconut jelly to finish.',
-        ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly',
-      },
-      {
-        number: 8,
-        title: 'Saigon by Scooter',
-        description: 'Ride the liveliest streets of the city as the final chapter of your tour.',
-      },
+      { number: 1, title: 'Grilled Banana with Sticky Rice', description: 'A perfect opening bite.', ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds' },
+      { number: 2, title: 'Noodle Soup', description: 'A bowl of Saigon\'s soul food.', ingredients: 'Fish, pork or vegetarian broth, rice noodles, fresh herbs' },
+      { number: 3, title: 'Vietnamese Pizza', description: 'A flavour explosion on a single cracker.', ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce' },
+      { number: 4, title: 'Grilled Beef with Betel Leaves', description: 'Fragrant ground beef wrapped in betel leaves or lemongrass.', ingredients: 'Ground beef, betel leaves, lemongrass, BBQ sauce' },
+      { number: 5, title: 'Sweet Potato Balloons', description: 'Light, crispy puffs of sweet potato.', ingredients: 'Sweet potato, tapioca flour' },
+      { number: 6, title: 'Bánh Mì', description: 'Vietnam\'s gift to the world.', ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs' },
+      { number: 7, title: 'Dessert', description: 'Caramel flan, sweet soup or coconut jelly to finish.', ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly' },
+      { number: 8, title: 'Saigon by Scooter', description: 'Ride the liveliest streets of the city as the final chapter of your tour.' },
     ],
     inclusions: [
       'Raincoat & helmet',

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { Clock, Check, X, ArrowLeft, MapPin, Users } from 'lucide-react'
 import { tours, getTourBySlug } from '@/lib/tours'
 import TourStops from '@/components/TourStops'
+import TourTimeSelector from '@/components/TourTimeSelector'
 
 export async function generateStaticParams() {
   return tours.map((t) => ({ slug: t.slug }))
@@ -96,11 +97,17 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
             </div>
           </div>
 
-          {/* Stops — expandable client component */}
+          {/* Stops — time slot selector or plain expandable list */}
           <div>
             <h2 className="font-heading text-espresso text-2xl font-bold mb-2">The Itinerary</h2>
-            <p className="text-sm text-muted-light mb-6">Tap each stop to see ingredients &amp; details</p>
-            <TourStops stops={tour.stops} />
+            <p className="text-sm text-muted-light mb-6">
+              {tour.timeSlots ? 'Choose your preferred time, then tap each stop for details' : 'Tap each stop to see ingredients & details'}
+            </p>
+            {tour.timeSlots ? (
+              <TourTimeSelector timeSlots={tour.timeSlots} />
+            ) : (
+              <TourStops stops={tour.stops} />
+            )}
           </div>
 
           {/* Inclusions / Exclusions */}

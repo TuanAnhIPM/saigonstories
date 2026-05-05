@@ -20,49 +20,27 @@ function WhatsAppIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-espresso text-white/90">
+    <footer className="bg-espresso text-white">
       <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Brand */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden bg-cream/10">
-              <Image
-                src="/images/logo/LOGO CTY ĐÃ TÁCH NỀN.png"
-                alt="Saigon's Stories"
-                fill
-                sizes="48px"
-                className="object-contain"
-              />
+            <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/15">
+              <Image src="/images/logo/LOGO CTY ĐÃ TÁCH NỀN.png" alt="Saigon's Stories" fill sizes="48px" className="object-contain" />
             </div>
-            <span className="font-heading font-bold text-lg text-cream">
-              Saigon&apos;s Stories
-            </span>
+            <span className="font-heading font-bold text-lg text-cream">Saigon&apos;s Stories</span>
           </div>
-          <p className="text-sm leading-relaxed text-white/60 max-w-xs italic">
-            ride · taste · explore
-          </p>
-          <p className="text-sm leading-relaxed text-white/75 max-w-xs">
+          <p className="text-sm leading-relaxed text-cream/80 max-w-xs italic">ride · taste · explore</p>
+          <p className="text-sm leading-relaxed text-white/90 max-w-xs">
             Authentic food, history and culture tours for curious travellers who want to go deeper than the guidebook.
           </p>
-
-          {/* Social links */}
           <div className="flex items-center gap-3 mt-2">
-            <a
-              href="https://wa.me/84363252764"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-terracotta hover:text-white transition-all"
-              aria-label="WhatsApp"
-            >
+            <a href="https://wa.me/84363252764" target="_blank" rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-terracotta transition-all" aria-label="WhatsApp">
               <WhatsAppIcon />
             </a>
-            <a
-              href="https://www.instagram.com/saigons.stories/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-terracotta hover:text-white transition-all"
-              aria-label="Instagram"
-            >
+            <a href="https://www.instagram.com/saigons.stories/" target="_blank" rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-terracotta transition-all" aria-label="Instagram">
               <InstagramIcon />
             </a>
           </div>
@@ -76,14 +54,12 @@ export default function Footer() {
               { href: '/tours', label: 'All Tours' },
               { href: '/tours/food-tour-scooter', label: 'Food by Scooter' },
               { href: '/tours/walking-food-tour', label: 'Walking Food Tour' },
-              { href: '/tours/history-culture-evening', label: 'History & Culture' },
+              { href: '/tours/history-culture', label: 'History & Culture' },
               { href: '/about', label: 'About Us' },
               { href: '/contact', label: 'Book a Tour' },
             ].map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-white/75 hover:text-terracotta transition-colors">
-                  {l.label}
-                </Link>
+                <Link href={l.href} className="text-white/85 hover:text-terracotta transition-colors">{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -92,7 +68,7 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <h3 className="font-heading text-cream font-semibold mb-5 text-lg">Get in Touch</h3>
-          <ul className="flex flex-col gap-4 text-sm text-white/75">
+          <ul className="flex flex-col gap-4 text-sm text-white/90">
             <li className="flex items-start gap-3">
               <MapPin size={16} className="mt-0.5 text-terracotta shrink-0" />
               <span>Cao Thắng, Bàn Cờ,<br />Hồ Chí Minh 70000, Vietnam</span>
@@ -111,45 +87,26 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <InstagramIcon />
-              <a
-                href="https://www.instagram.com/saigons.stories/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-terracotta transition-colors"
-              >
+              <a href="https://www.instagram.com/saigons.stories/" target="_blank" rel="noopener noreferrer" className="hover:text-terracotta transition-colors">
                 @saigons.stories
               </a>
             </li>
           </ul>
 
-          <div className="mt-8 pt-6 border-t border-cream/10 flex gap-2 flex-wrap">
+          <div className="mt-8 pt-6 border-t border-white/20 flex gap-2 flex-wrap">
             {['PayPal', 'Visa', 'Cash'].map((m) => (
-              <span key={m} className="text-xs text-white/50 bg-white/10 px-2.5 py-1 rounded-full">{m}</span>
+              <span key={m} className="text-xs text-white/85 bg-white/20 px-2.5 py-1 rounded-full">{m}</span>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="border-t border-cream/10">
-        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+      <div className="border-t border-white/20">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
           <span>© {new Date().getFullYear()} Saigon&apos;s Stories. All rights reserved.</span>
           <div className="flex items-center gap-5">
-            <a
-              href="https://www.instagram.com/saigons.stories/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://wa.me/84363252764"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              WhatsApp
-            </a>
+            <a href="https://www.instagram.com/saigons.stories/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href="https://wa.me/84363252764" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
           </div>
         </div>
       </div>

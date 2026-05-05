@@ -44,33 +44,33 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
       <section className="bg-espresso">
         <div className="max-w-6xl mx-auto px-6 py-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
               <MapPin size={18} className="text-terracotta shrink-0" />
               <div>
-                <p className="text-white/50 text-xs">Location</p>
+                <p className="text-white/75 text-xs">Location</p>
                 <p className="text-cream text-sm font-medium">Cao Thắng, Bàn Cờ, HCMC</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
               <Clock size={18} className="text-terracotta shrink-0" />
               <div>
-                <p className="text-white/50 text-xs">Duration</p>
+                <p className="text-white/75 text-xs">Duration</p>
                 <p className="text-cream text-sm font-medium">{tour.duration}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
               <Users size={18} className="text-terracotta shrink-0" />
               <div>
-                <p className="text-white/50 text-xs">Free Pickup</p>
+                <p className="text-white/75 text-xs">Free Pickup</p>
                 <p className="text-cream text-sm font-medium">Districts 1, 3 &amp; 4</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/10 rounded-2xl px-4 py-3">
+            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4.5 h-4.5 text-terracotta shrink-0">
                 <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
               </svg>
               <div>
-                <p className="text-white/50 text-xs">Departure</p>
+                <p className="text-white/75 text-xs">Departure</p>
                 <p className="text-cream text-sm font-medium">
                   {tour.departureTimes[0]}{tour.departureTimes.length > 1 ? ` +${tour.departureTimes.length - 1}` : ''}
                 </p>
@@ -100,7 +100,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
           {/* Stops — time slot selector or plain expandable list */}
           <div>
             <h2 className="font-heading text-espresso text-2xl font-bold mb-2">The Itinerary</h2>
-            <p className="text-sm text-muted-light mb-6">
+            <p className="text-sm text-muted mb-6">
               {tour.timeSlots ? 'Choose your preferred time, then tap each stop for details' : 'Tap each stop to see ingredients & details'}
             </p>
             {tour.timeSlots ? (
@@ -127,7 +127,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               <ul className="flex flex-col gap-2.5">
                 {tour.exclusions.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm text-muted">
-                    <X size={15} className="text-espresso-light/40 mt-0.5 shrink-0" />{item}
+                    <X size={15} className="text-espresso-light/60 mt-0.5 shrink-0" />{item}
                   </li>
                 ))}
               </ul>
@@ -135,7 +135,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
           </div>
 
           {tour.note && (
-            <div className="bg-cream-dark border-l-4 border-terracotta rounded-r-xl p-5 text-sm text-espresso-light/80 leading-relaxed">
+            <div className="bg-cream-dark border-l-4 border-terracotta rounded-r-xl p-5 text-sm text-espresso-light leading-relaxed">
               <strong className="text-espresso">Good to know:</strong> {tour.note}
             </div>
           )}
@@ -173,7 +173,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               <Link href="/contact" className="block bg-terracotta text-cream text-center font-medium px-6 py-3.5 rounded-full hover:bg-terracotta-dark transition-colors w-full">
                 Book This Tour
               </Link>
-              <p className="text-xs text-center text-espresso-light/50 mt-3">50% cash deposit · Free cancellation 24h+</p>
+              <p className="text-xs text-center text-muted mt-3">50% cash deposit · Free cancellation 24h+</p>
             </div>
 
             {/* Ways to Pay */}
@@ -191,7 +191,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               </ul>
               <div className="flex items-center gap-2 mt-4 pt-4 border-t border-sand">
                 {['PayPal', 'Visa', 'Cash'].map((m) => (
-                  <span key={m} className="text-xs font-semibold text-muted-light bg-sand px-3 py-1.5 rounded-full">{m}</span>
+                  <span key={m} className="text-xs font-semibold text-muted bg-sand px-3 py-1.5 rounded-full">{m}</span>
                 ))}
               </div>
             </div>
@@ -204,7 +204,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
                   <span key={t} className="text-sm bg-cream text-espresso-light px-3 py-1.5 rounded-full border border-sand">{t}</span>
                 ))}
               </div>
-              <p className="text-xs text-muted-light mt-3">Flexible — contact us to customise your time.</p>
+              <p className="text-xs text-muted mt-3">Flexible — contact us to customise your time.</p>
             </div>
 
             {/* WhatsApp */}

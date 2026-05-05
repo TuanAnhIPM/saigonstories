@@ -48,13 +48,13 @@ export default function HeroSection() {
             <motion.span
               key={word}
               className={`text-sm font-semibold tracking-[0.25em] uppercase transition-colors duration-500 ${
-                i === activeTag ? 'text-terracotta' : 'text-cream/50'
+                i === activeTag ? 'text-terracotta' : 'text-cream/80'
               }`}
               animate={{ scale: i === activeTag ? 1.08 : 1 }}
               transition={{ duration: 0.3 }}
             >
               {word}
-              {i < tagline.length - 1 && <span className="text-cream/25 ml-3">·</span>}
+              {i < tagline.length - 1 && <span className="text-cream/50 ml-3">·</span>}
             </motion.span>
           ))}
         </div>
@@ -104,7 +104,7 @@ export default function HeroSection() {
           </Link>
           <Link
             href="/contact"
-            className="border-2 border-white/70 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/15 transition-all hover:scale-105 text-lg backdrop-blur-sm"
+            className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 transition-all hover:scale-105 text-lg backdrop-blur-sm"
           >
             Book Now
           </Link>
@@ -113,13 +113,13 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.5 }}
       >
         <motion.div
-          className="w-px h-10 bg-white/40"
+          className="w-px h-10 bg-white/70"
           animate={{ scaleY: [1, 0.3, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         />

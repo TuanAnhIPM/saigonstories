@@ -116,7 +116,7 @@ export default function AboutPage() {
       <section className="py-24 bg-espresso overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 mb-10 text-center">
           <h2 className="font-heading text-cream text-3xl md:text-4xl font-bold">Life on tour</h2>
-          <p className="text-white/50 mt-3 text-sm">Scroll to explore →</p>
+          <p className="text-white/75 mt-3 text-sm">Scroll to explore →</p>
         </div>
         <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-6 scrollbar-hide">
           {lifeImages.map((img, i) => (
@@ -155,7 +155,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="bg-espresso py-20 text-center px-6">
         <h2 className="font-heading text-cream text-3xl md:text-4xl font-bold mb-5">Come ride with us</h2>
-        <p className="text-white/85 mb-8 max-w-md mx-auto">Whether it&apos;s your first day in Saigon or your tenth — there&apos;s always more to discover.</p>
+        <p className="text-white/95 mb-8 max-w-md mx-auto">Whether it&apos;s your first day in Saigon or your tenth — there&apos;s always more to discover.</p>
         <Link href="/tours" className="inline-flex items-center gap-2 bg-terracotta text-cream font-medium px-8 py-4 rounded-full hover:bg-terracotta-dark transition-colors">
           Explore Our Tours <ArrowRight size={16} />
         </Link>

@@ -78,7 +78,7 @@ function SourceBadge({ source }: { source: string }) {
     )
   }
   return (
-    <span className="text-xs font-medium text-muted-light">Google</span>
+    <span className="text-xs font-medium text-muted">Google</span>
   )
 }
 

@@ -47,7 +47,7 @@ export default function StatsBar() {
         {stats.map((s) => (
           <div key={s.label}>
             <Counter target={s.value} suffix={s.suffix} decimal={s.decimal} />
-            <div className="text-cream/60 text-sm mt-1">{s.label}</div>
+            <div className="text-cream/90 text-sm mt-1">{s.label}</div>
           </div>
         ))}
       </div>

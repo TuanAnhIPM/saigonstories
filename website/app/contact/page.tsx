@@ -17,7 +17,7 @@ export default function ContactPage() {
           alt="Guests at a Saigon food stall"
           fill
           sizes="100vw"
-          className="object-cover opacity-20"
+          className="object-cover opacity-35"
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <p className="text-terracotta text-sm font-medium tracking-widest uppercase mb-3">Get in Touch</p>
@@ -42,7 +42,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-medium text-espresso mb-0.5">Location</p>
                   <p className="text-muted">Cao Thắng, Bàn Cờ,<br />Hồ Chí Minh 70000, Vietnam</p>
-                  <p className="text-espresso-light/50 text-xs mt-1">Free pickup: Districts 1, 3 &amp; 4</p>
+                  <p className="text-muted text-xs mt-1">Free pickup: Districts 1, 3 &amp; 4</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -57,7 +57,7 @@ export default function ContactPage() {
                   >
                     Message us on WhatsApp
                   </a>
-                  <p className="text-espresso-light/50 text-xs mt-1">Fastest way to reach us</p>
+                  <p className="text-muted text-xs mt-1">Fastest way to reach us</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">

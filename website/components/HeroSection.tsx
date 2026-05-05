@@ -35,8 +35,10 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Bottom-only gradient so photo is fully visible, text stays readable */}
-      <div className="absolute inset-0 bg-linear-to-t from-espresso/80 via-espresso/20 to-transparent" />
+      {/* Uniform base darkens the whole image enough for text contrast */}
+      <div className="absolute inset-0 bg-espresso/45" />
+      {/* Extra gradient at bottom for depth */}
+      <div className="absolute inset-0 bg-linear-to-t from-espresso/70 via-transparent to-transparent" />
 
       <motion.div
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"

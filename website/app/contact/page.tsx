@@ -41,7 +41,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-espresso mb-0.5">Location</p>
-                  <p className="text-muted">Ho Chi Minh City (Saigon), Vietnam</p>
+                  <p className="text-muted">Cao Thắng, Bàn Cờ,<br />Hồ Chí Minh 70000, Vietnam</p>
                   <p className="text-espresso-light/50 text-xs mt-1">Free pickup: Districts 1, 3 &amp; 4</p>
                 </div>
               </li>

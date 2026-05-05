@@ -3,12 +3,14 @@ export type TourCategory = 'food' | 'history' | 'combo'
 export type PricingTier = {
   group: string
   price: number
+  note?: string
 }
 
 export type TourStop = {
   number: number
   title: string
   description: string
+  ingredients?: string
 }
 
 export type Tour = {
@@ -50,32 +52,82 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3422.JPG',
     ],
     pricing: [
-      { group: '1–2 guests', price: 38 },
-      { group: '3–4 guests', price: 32 },
+      { group: '1–4 guests', price: 38 },
+      { group: '11+ guests', price: 32, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 5+', 'FOC for 1 person from 11 guests'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'Raincoat & helmet provided',
       'English-speaking guide & driver',
-      '4–5 food stops with drinks',
+      '10 food stops with drinks',
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      { number: 1, title: 'Grilled Banana with Sticky Rice', description: 'Ripe banana, coconut milk, sesame seeds — a classic street-side start.' },
-      { number: 2, title: 'Fish or Pork Noodle Soup', description: 'Rice noodles, fresh herbs, bean sprouts, spring onion. Vegetarian option available.' },
-      { number: 3, title: 'Bánh Xèo — Vietnamese Crispy Pancake', description: 'Pork, shrimp, mung bean and bean sprouts in a crispy turmeric rice-flour crepe.' },
-      { number: 4, title: 'Deep-Fried or Fresh Spring Rolls', description: 'Rice paper rolls with pork, white onions and pepper — fried or fresh.' },
-      { number: 5, title: 'Vietnamese Pizza', description: 'Rice paper, egg, minced pork, sausage, dried shrimp, mayo, chilli and tamarind sauce.' },
-      { number: 6, title: 'Grilled Beef with Betel Leaves', description: 'Ground beef with lemongrass, betel leaves, pickle and BBQ sauce.' },
-      { number: 7, title: 'Sweet Potato Balloons', description: 'Crispy puffs of sweet potato and tapioca flour — Saigon\'s favourite snack.' },
-      { number: 8, title: 'Rice Paper Cracker', description: 'Thin, grilled rice paper with coconut milk — simple and addictive.' },
-      { number: 9, title: 'Bánh Mì', description: 'The iconic Vietnamese baguette with pork sausage, ham, pickle and herbs.' },
-      { number: 10, title: 'Dessert', description: 'Caramel flan, Vietnamese sweet soup or coconut jelly — finish on a sweet note.' },
+      {
+        number: 1,
+        title: 'Grilled Banana with Sticky Rice',
+        description: 'A classic street-side start — sweet, fragrant and unmistakably Saigon.',
+        ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds',
+      },
+      {
+        number: 2,
+        title: 'Fish or Pork Noodle Soup',
+        description: 'A soul-warming bowl straight from a family recipe passed down for generations.',
+        ingredients: 'Rice noodles, fresh herbs, bean sprouts, spring onion. Vegetarian option available.',
+      },
+      {
+        number: 3,
+        title: 'Bánh Xèo — Vietnamese Crispy Pancake',
+        description: 'Sizzling hot, golden and impossible to eat quietly.',
+        ingredients: 'Pork, shrimp, mung bean, bean sprouts, turmeric rice-flour crepe',
+      },
+      {
+        number: 4,
+        title: 'Deep-Fried or Fresh Spring Rolls',
+        description: 'Two versions, one unforgettable combo — crispy or cool and fresh.',
+        ingredients: 'Rice paper, pork, white onions, pepper — fried or fresh',
+      },
+      {
+        number: 5,
+        title: 'Vietnamese Pizza',
+        description: 'Saigon\'s legendary street snack — a flavour explosion on a single cracker.',
+        ingredients: 'Rice paper, egg, minced pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
+      },
+      {
+        number: 6,
+        title: 'Grilled Beef with Betel Leaves',
+        description: 'Aromatic, smoky and wrapped in something you\'ve never tasted before.',
+        ingredients: 'Ground beef, lemongrass, betel leaves, pickle, BBQ sauce',
+      },
+      {
+        number: 7,
+        title: 'Sweet Potato Balloons',
+        description: 'Crispy, puffed and addictive — Saigon\'s favourite snack in one bite.',
+        ingredients: 'Sweet potato, tapioca flour',
+      },
+      {
+        number: 8,
+        title: 'Rice Paper Cracker',
+        description: 'Paper-thin, grilled and quietly perfect.',
+        ingredients: 'Thin rice paper, coconut milk',
+      },
+      {
+        number: 9,
+        title: 'Bánh Mì',
+        description: 'The icon. Vietnam\'s greatest contribution to the sandwich world.',
+        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, fresh herbs',
+      },
+      {
+        number: 10,
+        title: 'Dessert',
+        description: 'A sweet finale the Saigon way.',
+        ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly',
+      },
     ],
     inclusions: [
       'Raincoat & helmet',
       'English-speaking guide and driver',
-      '4–5 food stops and drinks (sugar cane juice, kumquat tea, local beer or iced tea)',
+      '10 food stops and drinks (sugar cane juice, kumquat tea, local beer or iced tea)',
       'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
     ],
     exclusions: ['Personal expenses', 'Tips for guide & driver'],
@@ -99,12 +151,11 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3439.JPG',
     ],
     pricing: [
-      { group: '2 guests', price: 38 },
-      { group: '3–6 guests', price: 32 },
-      { group: '7–15 guests', price: 27 },
-      { group: '16+ guests', price: 23 },
+      { group: '1 guest', price: 38, note: '+200,000 VND solo supplement' },
+      { group: '2–10 guests', price: 38 },
+      { group: '11+ guests', price: 32, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 11+', 'FOC for 1 person from 11 guests'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'Arrive by car, explore on foot',
       'English-speaking guide',
@@ -112,16 +163,66 @@ export const tours: Tour[] = [
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      { number: 1, title: 'Noodle Soup — Fish, Pork or Vegetarian', description: 'Rice noodles in a flavourful broth with fresh herbs and bean sprouts.' },
-      { number: 2, title: 'Bánh Xèo — Crispy Rice Pancake', description: 'Sizzling golden crepe filled with shrimp, pork and sprouts.' },
-      { number: 3, title: 'Nem Nướng — Grilled Pork Sausage', description: 'Grilled pork sausage served with rice noodles and fresh herbs.' },
-      { number: 4, title: 'Spring Rolls', description: 'Deep-fried or fresh summer rolls with pork and rice paper.' },
-      { number: 5, title: 'Vietnamese Pizza', description: 'The beloved street snack — rice paper loaded with egg, pork, sausage and sauces.' },
-      { number: 6, title: 'Grilled Beef with Betel Leaves', description: 'Fragrant ground beef with lemongrass, betel leaves and BBQ sauce.' },
-      { number: 7, title: 'Sweet Potato Balloons', description: 'Crispy puffed sweet potato snacks, a Saigon street favourite.' },
-      { number: 8, title: 'Rice Paper Cracker', description: 'Grilled rice paper with coconut milk — thin, crispy and light.' },
-      { number: 9, title: 'Bánh Mì', description: 'Vietnam\'s legendary baguette — pork sausage, ham, pickle, cucumber and herbs.' },
-      { number: 10, title: 'Dessert', description: 'Caramel flan, sweet soup or coconut jelly to close the evening.' },
+      {
+        number: 1,
+        title: 'Noodle Soup — Fish, Pork or Vegetarian',
+        description: 'A flavourful bowl to ease you into the evening.',
+        ingredients: 'Rice noodles, broth, fresh herbs, bean sprouts',
+      },
+      {
+        number: 2,
+        title: 'Bánh Xèo — Crispy Rice Pancake',
+        description: 'Sizzling golden crepe, best eaten straight off the pan.',
+        ingredients: 'Shrimp, pork, bean sprouts, turmeric rice-flour batter',
+      },
+      {
+        number: 3,
+        title: 'Nem Nướng — Grilled Pork Sausage',
+        description: 'Smoky, fragrant and wrapped in fresh herbs.',
+        ingredients: 'Grilled pork sausage, rice noodles, fresh herbs',
+      },
+      {
+        number: 4,
+        title: 'Spring Rolls',
+        description: 'Crispy or fresh — both versions are essential Saigon.',
+        ingredients: 'Pork, rice paper — deep-fried or fresh summer roll',
+      },
+      {
+        number: 5,
+        title: 'Vietnamese Pizza',
+        description: 'The beloved street snack — loaded and irresistible.',
+        ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
+      },
+      {
+        number: 6,
+        title: 'Grilled Beef with Betel Leaves',
+        description: 'Fragrant ground beef with a char that lingers.',
+        ingredients: 'Ground beef, lemongrass, betel leaves, BBQ sauce',
+      },
+      {
+        number: 7,
+        title: 'Sweet Potato Balloons',
+        description: 'Crispy puffed snacks you\'ll want to take home.',
+        ingredients: 'Sweet potato, tapioca flour',
+      },
+      {
+        number: 8,
+        title: 'Rice Paper Cracker',
+        description: 'Light, thin and grilled to perfection.',
+        ingredients: 'Rice paper, coconut milk',
+      },
+      {
+        number: 9,
+        title: 'Bánh Mì',
+        description: 'Vietnam\'s legendary baguette — the perfect night cap.',
+        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs',
+      },
+      {
+        number: 10,
+        title: 'Dessert',
+        description: 'A sweet close to a memorable evening.',
+        ingredients: 'Caramel flan, sweet soup, or coconut jelly',
+      },
     ],
     inclusions: [
       'Grab car transfer to the food court',
@@ -130,8 +231,8 @@ export const tours: Tour[] = [
       'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
     ],
     exclusions: ['Personal expenses', 'Tips for guide'],
-    note: 'Minimum 2 guests required per booking. Menu adapts to dietary restrictions.',
-    minGuests: 2,
+    note: 'Solo bookings include a 200,000 VND supplement. Menu adapts to dietary restrictions.',
+    minGuests: 1,
   },
   {
     slug: 'history-culture-morning',
@@ -151,10 +252,10 @@ export const tours: Tour[] = [
       '/images/history-tour/IMG_3430.JPG',
     ],
     pricing: [
-      { group: '1–2 guests', price: 33 },
-      { group: '3–4 guests', price: 28 },
+      { group: '1–4 guests', price: 33 },
+      { group: '11+ guests', price: 28, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 5+', 'FOC for 1 person from 11 guests or from your 2nd booking'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'Off-the-beaten-path hidden gems',
       'English-speaking guide & driver',
@@ -195,10 +296,10 @@ export const tours: Tour[] = [
       '/images/history-tour/IMG_3503.JPG',
     ],
     pricing: [
-      { group: '1–2 guests', price: 33 },
-      { group: '3–4 guests', price: 28 },
+      { group: '1–4 guests', price: 33 },
+      { group: '11+ guests', price: 28, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 5+', 'FOC for 1 person from 11 guests or from your 2nd booking'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'The city\'s best-kept secrets',
       'English-speaking guide & driver',
@@ -239,10 +340,10 @@ export const tours: Tour[] = [
       '/images/history-tour/IMG_2729.JPG',
     ],
     pricing: [
-      { group: '1–2 guests', price: 33 },
-      { group: '3–4 guests', price: 28 },
+      { group: '1–4 guests', price: 33 },
+      { group: '11+ guests', price: 28, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 5+', 'FOC for 1 person from 11 guests or from your 2nd booking'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'Saigon lit up at dusk',
       'English-speaking guide & driver',
@@ -283,30 +384,69 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3491.PNG',
     ],
     pricing: [
-      { group: '1–2 guests', price: 38 },
-      { group: '3–4 guests', price: 32 },
+      { group: '1–4 guests', price: 38 },
+      { group: '11+ guests', price: 32, note: '15% group discount' },
     ],
-    groupDiscounts: ['15% discount for groups of 5+', 'FOC for 1 person from 11 guests'],
+    groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
       'Food + city sightseeing in one',
       'English-speaking guide & driver',
-      '4 food stops with drinks',
+      '7 food stops with drinks',
       'Free hotel pickup (Districts 1, 3 & 4)',
     ],
     stops: [
-      { number: 1, title: 'Grilled Banana with Sticky Rice', description: 'Ripe banana, coconut milk and sesame seeds — a perfect opening bite.' },
-      { number: 2, title: 'Noodle Soup', description: 'Fish, pork or vegetarian — a bowl of Saigon\'s soul food.' },
-      { number: 3, title: 'Vietnamese Pizza', description: 'Rice paper with egg, pork, sausage, dried shrimp and a tangle of sauces.' },
-      { number: 4, title: 'Grilled Beef with Betel Leaves', description: 'Fragrant ground beef wrapped in betel leaves or lemongrass.' },
-      { number: 5, title: 'Sweet Potato Balloons', description: 'Light, crispy puffs of sweet potato and tapioca flour.' },
-      { number: 6, title: 'Bánh Mì', description: 'Vietnam\'s gift to the world — a baguette packed with character.' },
-      { number: 7, title: 'Dessert', description: 'Caramel flan, sweet soup or coconut jelly to finish.' },
-      { number: 8, title: 'Saigon by Scooter', description: 'Ride the liveliest streets of the city as the final chapter of your tour.' },
+      {
+        number: 1,
+        title: 'Grilled Banana with Sticky Rice',
+        description: 'A perfect opening bite.',
+        ingredients: 'Ripe banana, sticky rice, coconut milk, sesame seeds',
+      },
+      {
+        number: 2,
+        title: 'Noodle Soup',
+        description: 'A bowl of Saigon\'s soul food.',
+        ingredients: 'Fish, pork or vegetarian broth, rice noodles, fresh herbs',
+      },
+      {
+        number: 3,
+        title: 'Vietnamese Pizza',
+        description: 'A flavour explosion on a single cracker.',
+        ingredients: 'Rice paper, egg, pork, sausage, dried shrimp, mayo, chilli, tamarind sauce',
+      },
+      {
+        number: 4,
+        title: 'Grilled Beef with Betel Leaves',
+        description: 'Fragrant ground beef wrapped in betel leaves or lemongrass.',
+        ingredients: 'Ground beef, betel leaves, lemongrass, BBQ sauce',
+      },
+      {
+        number: 5,
+        title: 'Sweet Potato Balloons',
+        description: 'Light, crispy puffs of sweet potato.',
+        ingredients: 'Sweet potato, tapioca flour',
+      },
+      {
+        number: 6,
+        title: 'Bánh Mì',
+        description: 'Vietnam\'s gift to the world.',
+        ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, herbs',
+      },
+      {
+        number: 7,
+        title: 'Dessert',
+        description: 'Caramel flan, sweet soup or coconut jelly to finish.',
+        ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly',
+      },
+      {
+        number: 8,
+        title: 'Saigon by Scooter',
+        description: 'Ride the liveliest streets of the city as the final chapter of your tour.',
+      },
     ],
     inclusions: [
       'Raincoat & helmet',
       'English-speaking guide and driver',
-      '4 food stops and drinks (sugar cane juice, kumquat tea, local beer or iced tea)',
+      '7 food stops and drinks (sugar cane juice, kumquat tea, local beer or iced tea)',
       'Free hotel pickup and drop-off (Districts 1, 3 & 4)',
     ],
     exclusions: ['Personal expenses', 'Tips for guide & driver'],

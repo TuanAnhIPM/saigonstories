@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection'
 import StatsBar from '@/components/StatsBar'
 import AnimatedSection from '@/components/AnimatedSection'
 import Testimonials from '@/components/Testimonials'
+import FAQ from '@/components/FAQ'
 
 const featuredTours = [
   tours.find((t) => t.slug === 'food-tour-scooter')!,
@@ -81,8 +82,8 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-espresso/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-terracotta text-cream text-xs font-medium px-3 py-1 rounded-full capitalize">
-                      {tour.category === 'food' ? 'Food Tour' : tour.category === 'history' ? 'History & Culture' : 'Food + Sightseeing'}
+                    <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
+                      ★ Highlight Tour
                     </span>
                   </div>
                 </div>
@@ -249,6 +250,9 @@ export default function HomePage() {
           </div>
         </AnimatedSection>
       </section>
+
+      {/* ── FAQ ── */}
+      <FAQ />
 
       {/* ── Policies snippet ── */}
       <section className="max-w-4xl mx-auto px-6 py-20">

@@ -35,8 +35,8 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Multi-layer overlay for better text contrast */}
-      <div className="absolute inset-0 bg-linear-to-b from-espresso/80 via-espresso/65 to-espresso/75" />
+      {/* Overlay — dark enough for text, light enough to see the photo */}
+      <div className="absolute inset-0 bg-linear-to-b from-espresso/55 via-espresso/40 to-espresso/60" />
 
       <motion.div
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"

@@ -95,7 +95,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-4 text-sm text-white/75">
             <li className="flex items-start gap-3">
               <MapPin size={16} className="mt-0.5 text-terracotta shrink-0" />
-              <span>Ho Chi Minh City (Saigon), Vietnam</span>
+              <span>Cao Thắng, Bàn Cờ,<br />Hồ Chí Minh 70000, Vietnam</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={16} className="text-terracotta shrink-0" />
@@ -122,11 +122,10 @@ export default function Footer() {
             </li>
           </ul>
 
-          <div className="mt-8 pt-6 border-t border-cream/10">
-            <p className="text-xs text-white/40">
-              Free hotel pickup in Districts 1, 3 &amp; 4.<br />
-              Other areas arranged via WhatsApp.
-            </p>
+          <div className="mt-8 pt-6 border-t border-cream/10 flex gap-2 flex-wrap">
+            {['PayPal', 'Visa', 'Cash'].map((m) => (
+              <span key={m} className="text-xs text-white/50 bg-white/10 px-2.5 py-1 rounded-full">{m}</span>
+            ))}
           </div>
         </div>
       </div>

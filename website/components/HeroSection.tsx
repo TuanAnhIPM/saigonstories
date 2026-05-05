@@ -35,8 +35,8 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* Overlay — dark enough for text, light enough to see the photo */}
-      <div className="absolute inset-0 bg-linear-to-b from-espresso/55 via-espresso/40 to-espresso/60" />
+      {/* Bottom-only gradient so photo is fully visible, text stays readable */}
+      <div className="absolute inset-0 bg-linear-to-t from-espresso/80 via-espresso/20 to-transparent" />
 
       <motion.div
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
@@ -62,7 +62,7 @@ export default function HeroSection() {
         {/* Headline — heavier weight, tighter */}
         <motion.h1
           className="font-heading text-cream text-5xl md:text-7xl font-black leading-[1.1] mb-6 drop-shadow-lg"
-          style={{ textShadow: '0 2px 20px rgba(0,0,0,0.4)' }}
+          style={{ textShadow: '0 2px 24px rgba(0,0,0,0.8), 0 4px 48px rgba(0,0,0,0.6)' }}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -81,7 +81,7 @@ export default function HeroSection() {
         {/* Subheading — white, full opacity, semibold */}
         <motion.p
           className="text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}
+          style={{ textShadow: '0 2px 16px rgba(0,0,0,0.9), 0 4px 32px rgba(0,0,0,0.7)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}

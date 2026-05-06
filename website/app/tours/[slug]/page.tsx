@@ -47,7 +47,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
                 <MapPin size={16} className="text-terracotta shrink-0" />
                 <div>
                   <p className="text-muted text-xs">Location</p>
-                  <p className="text-espresso text-sm font-medium">Cao Thắng, HCMC</p>
+                  <p className="text-espresso text-sm font-medium">Ho Chi Minh City</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">

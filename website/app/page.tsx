@@ -85,11 +85,14 @@ export default function HomePage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-espresso/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
-                      {tour.badge}
-                    </span>
-                  </div>
+                  {tour.badge === 'Best Seller' && (
+                    <div className="absolute top-0 left-0">
+                      <span className="bg-[#4a5a28] text-white text-xs font-black tracking-widest uppercase px-4 py-2.5 block leading-tight rounded-br-xl">
+                        <span className="block">Best</span>
+                        <span className="block">Seller</span>
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading text-espresso text-xl font-bold mb-2">{tour.title}</h3>

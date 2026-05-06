@@ -42,12 +42,11 @@ export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative pt-40 pb-24 bg-espresso overflow-hidden">
-        <Image src="/images/history-tour/IMG_3444.JPG" alt="Our guides with guests at a Saigon landmark" fill sizes="100vw" className="object-cover opacity-30" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <section className="bg-cream pt-36 pb-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-terracotta text-sm font-medium tracking-widest uppercase mb-3">Our Story</p>
-          <h1 className="font-heading text-cream text-5xl md:text-6xl font-bold mb-6">We are Saigon&apos;s Stories</h1>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed">
+          <h1 className="font-heading text-espresso text-5xl md:text-6xl font-bold mb-6">We are Saigon&apos;s Stories</h1>
+          <p className="text-espresso-light text-lg max-w-2xl mx-auto leading-relaxed">
             A team of passionate Saigon locals who believe the best way to understand a city is through its food, its history and the people who live it every day.
           </p>
         </div>
@@ -112,18 +111,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Life on Tour — horizontal scroll carousel */}
+      {/* Life on Tour — auto-scrolling marquee */}
       <section className="py-24 bg-espresso overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 mb-10 text-center">
           <h2 className="font-heading text-cream text-3xl md:text-4xl font-bold">Life on tour</h2>
-          <p className="text-white/75 mt-3 text-sm">Scroll to explore →</p>
         </div>
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-6 pb-6 scrollbar-hide">
-          {lifeImages.map((img, i) => (
-            <div key={i} className="relative shrink-0 w-72 h-80 rounded-2xl overflow-hidden snap-start">
-              <Image src={img.src} alt={img.alt} fill sizes="288px" className="object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex gap-4 animate-marquee w-max">
+            {[...lifeImages, ...lifeImages].map((img, i) => (
+              <div key={i} className="relative shrink-0 w-72 h-80 rounded-2xl overflow-hidden">
+                <Image src={img.src} alt={img.alt} fill sizes="288px" className="object-cover" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

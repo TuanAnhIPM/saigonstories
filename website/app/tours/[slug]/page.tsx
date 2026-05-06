@@ -25,57 +25,61 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[65vh] min-h-120 flex items-end overflow-hidden">
-        <Image src={tour.heroImage} alt={tour.title} fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-linear-to-t from-espresso/90 via-espresso/30 to-transparent" />
-        <div className="relative z-10 max-w-6xl mx-auto px-6 pb-14 w-full">
-          <Link href="/tours" className="inline-flex items-center gap-2 text-white/85 text-sm mb-6 hover:text-cream transition-colors">
-            <ArrowLeft size={14} /> All Tours
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1 rounded-full">{tour.badge}</span>
+      <section className="bg-cream pt-24">
+        <div className="max-w-6xl mx-auto px-6 pt-12 pb-0 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: text */}
+          <div className="flex flex-col gap-6">
+            <Link href="/tours" className="inline-flex items-center gap-2 text-muted text-sm hover:text-terracotta transition-colors w-fit">
+              <ArrowLeft size={14} /> All Tours
+            </Link>
+            {tour.badge === 'Best Seller' && (
+              <div className="w-fit">
+                <span className="bg-[#4a5a28] text-white text-xs font-black tracking-widest uppercase px-4 py-2 block leading-tight rounded-lg">
+                  <span className="block">Best</span><span className="block">Seller</span>
+                </span>
+              </div>
+            )}
+            <h1 className="font-heading text-espresso text-4xl md:text-5xl font-bold leading-tight">{tour.title}</h1>
+            <p className="text-espresso-light text-lg leading-relaxed">{tour.tagline}</p>
+            {/* Quick info */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
+                <MapPin size={16} className="text-terracotta shrink-0" />
+                <div>
+                  <p className="text-muted text-xs">Location</p>
+                  <p className="text-espresso text-sm font-medium">Cao Thắng, HCMC</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
+                <Clock size={16} className="text-terracotta shrink-0" />
+                <div>
+                  <p className="text-muted text-xs">Duration</p>
+                  <p className="text-espresso text-sm font-medium">{tour.duration}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
+                <Users size={16} className="text-terracotta shrink-0" />
+                <div>
+                  <p className="text-muted text-xs">Free Pickup</p>
+                  <p className="text-espresso text-sm font-medium">Districts 1, 3 &amp; 4</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4 text-terracotta shrink-0">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                </svg>
+                <div>
+                  <p className="text-muted text-xs">Departure</p>
+                  <p className="text-espresso text-sm font-medium">
+                    {tour.departureTimes[0]}{tour.departureTimes.length > 1 ? ` +${tour.departureTimes.length - 1}` : ''}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 className="font-heading text-cream text-4xl md:text-6xl font-bold mb-3">{tour.title}</h1>
-          <p className="text-white/90 text-lg max-w-2xl">{tour.tagline}</p>
-        </div>
-      </section>
-
-      {/* Quick info box */}
-      <section className="bg-espresso">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
-              <MapPin size={18} className="text-terracotta shrink-0" />
-              <div>
-                <p className="text-white/75 text-xs">Location</p>
-                <p className="text-cream text-sm font-medium">Cao Thắng, Bàn Cờ, HCMC</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
-              <Clock size={18} className="text-terracotta shrink-0" />
-              <div>
-                <p className="text-white/75 text-xs">Duration</p>
-                <p className="text-cream text-sm font-medium">{tour.duration}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
-              <Users size={18} className="text-terracotta shrink-0" />
-              <div>
-                <p className="text-white/75 text-xs">Free Pickup</p>
-                <p className="text-cream text-sm font-medium">Districts 1, 3 &amp; 4</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 bg-white/20 rounded-2xl px-4 py-3">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4.5 h-4.5 text-terracotta shrink-0">
-                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-              </svg>
-              <div>
-                <p className="text-white/75 text-xs">Departure</p>
-                <p className="text-cream text-sm font-medium">
-                  {tour.departureTimes[0]}{tour.departureTimes.length > 1 ? ` +${tour.departureTimes.length - 1}` : ''}
-                </p>
-              </div>
-            </div>
+          {/* Right: image */}
+          <div className="relative h-96 lg:h-130 rounded-2xl overflow-hidden shadow-lg">
+            <Image src={tour.heroImage} alt={tour.title} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </div>
         </div>
       </section>
@@ -96,6 +100,23 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               ))}
             </div>
           </div>
+
+          {/* Video — food tour only */}
+          {slug === 'food-tour-scooter' && (
+            <div>
+              <h2 className="font-heading text-espresso text-2xl font-bold mb-6">See it in action</h2>
+              <div className="rounded-2xl overflow-hidden shadow-lg aspect-video">
+                <video
+                  src="/videos/food-tour-highlight.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Stops — time slot selector or plain expandable list */}
           <div>

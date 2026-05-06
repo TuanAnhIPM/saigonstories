@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const faqs = [
   {
@@ -48,24 +49,54 @@ export default function FAQ() {
         <h2 className="font-heading text-espresso text-4xl font-bold">Frequently asked</h2>
       </div>
 
-      <div className="flex flex-col divide-y divide-sand">
-        {faqs.map((faq, i) => (
-          <div key={i}>
-            <button
-              className="flex items-center justify-between w-full py-5 text-left gap-4"
-              onClick={() => setOpen(open === i ? null : i)}
+      <div className="flex flex-col gap-3">
+        {faqs.map((faq, i) => {
+          const isOpen = open === i
+          return (
+            <div
+              key={i}
+              className={`rounded-2xl border transition-colors duration-200 ${
+                isOpen ? 'border-terracotta/40 bg-cream' : 'border-sand bg-white hover:border-terracotta/30'
+              }`}
             >
-              <span className="font-heading text-espresso font-semibold text-base">{faq.q}</span>
-              <ChevronDown
-                size={18}
-                className={`text-terracotta shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {open === i && (
-              <p className="text-sm text-muted leading-relaxed pb-5">{faq.a}</p>
-            )}
-          </div>
-        ))}
+              <button
+                className="flex items-center justify-between w-full px-6 py-5 text-left gap-4"
+                onClick={() => setOpen(isOpen ? null : i)}
+              >
+                <span className={`font-heading font-semibold text-base transition-colors duration-200 ${isOpen ? 'text-terracotta' : 'text-espresso'}`}>
+                  {faq.q}
+                </span>
+                <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ${
+                  isOpen ? 'bg-terracotta text-cream' : 'bg-sand text-espresso-light'
+                }`}>
+                  <ChevronDown
+                    size={15}
+                    className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                  />
+                </div>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="answer"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.28, ease: 'easeInOut' }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div className="px-6 pb-5">
+                      <div className="border-l-4 border-terracotta pl-4 py-1">
+                        <p className="text-sm text-espresso-light leading-relaxed">{faq.a}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )
+        })}
       </div>
     </section>
   )

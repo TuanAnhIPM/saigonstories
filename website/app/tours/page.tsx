@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Clock, ArrowRight, MapPin, Users } from 'lucide-react'
 import { tours } from '@/lib/tours'
 
@@ -12,12 +12,11 @@ export default function ToursPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative pt-40 pb-20 bg-espresso overflow-hidden">
-        <Image src="/images/food-tour/IMG_3435.JPG" alt="Saigon street food tour" fill sizes="100vw" className="object-cover opacity-30" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <section className="bg-cream pt-36 pb-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-terracotta text-sm font-medium tracking-widest uppercase mb-3">Explore</p>
-          <h1 className="font-heading text-cream text-5xl md:text-6xl font-bold mb-5">Our Tours</h1>
-          <p className="text-white/85 text-lg max-w-xl mx-auto">
+          <h1 className="font-heading text-espresso text-5xl md:text-6xl font-bold mb-5">Our Tours</h1>
+          <p className="text-espresso-light text-lg max-w-xl mx-auto">
             Every tour is an invitation to go deeper — into Saigon&apos;s food, its history, and the lives of the people who make it extraordinary.
           </p>
         </div>
@@ -41,11 +40,14 @@ export default function ToursPage() {
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-espresso/70 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-terracotta text-cream text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
-                    {tour.badge}
-                  </span>
-                </div>
+                {tour.badge === 'Best Seller' && (
+                  <div className="absolute top-0 left-0">
+                    <span className="bg-[#4a5a28] text-white text-xs font-black tracking-widest uppercase px-4 py-2.5 block leading-tight rounded-br-xl">
+                      <span className="block">Best</span>
+                      <span className="block">Seller</span>
+                    </span>
+                  </div>
+                )}
                 <div className="absolute bottom-4 right-4">
                   <span className="bg-white/95 text-espresso text-sm font-bold px-3 py-1.5 rounded-full shadow">
                     From ${tour.pricing[0].price}

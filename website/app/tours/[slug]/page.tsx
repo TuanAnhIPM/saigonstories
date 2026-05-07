@@ -5,6 +5,7 @@ import { Clock, Check, X, ArrowLeft, MapPin, Users } from 'lucide-react'
 import { tours, getTourBySlug } from '@/lib/tours'
 import TourStops from '@/components/TourStops'
 import TourTimeSelector from '@/components/TourTimeSelector'
+import TourImageSlideshow from '@/components/TourImageSlideshow'
 
 export async function generateStaticParams() {
   return tours.map((t) => ({ slug: t.slug }))
@@ -58,29 +59,21 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
-                <Users size={16} className="text-terracotta shrink-0" />
-                <div>
-                  <p className="text-muted text-xs">Free Pickup</p>
-                  <p className="text-espresso text-sm font-medium">Districts 1, 3 &amp; 4</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 bg-sand-light rounded-xl px-4 py-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4 text-terracotta shrink-0">
                   <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
                 </svg>
                 <div>
                   <p className="text-muted text-xs">Departure</p>
-                  <p className="text-espresso text-sm font-medium">
-                    {tour.departureTimes[0]}{tour.departureTimes.length > 1 ? ` +${tour.departureTimes.length - 1}` : ''}
-                  </p>
+                  <p className="text-espresso text-sm font-medium">Flexible</p>
                 </div>
               </div>
             </div>
           </div>
-          {/* Right: image */}
-          <div className="relative h-96 lg:h-130 rounded-2xl overflow-hidden shadow-lg">
-            <Image src={tour.heroImage} alt={tour.title} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-          </div>
+          {/* Right: auto slideshow */}
+          <TourImageSlideshow
+            images={[tour.heroImage, ...tour.galleryImages]}
+            title={tour.title}
+          />
         </div>
       </section>
 
@@ -120,7 +113,10 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
 
           {/* Stops — time slot selector or plain expandable list */}
           <div>
-            <h2 className="font-heading text-espresso text-2xl font-bold mb-2">The Itinerary</h2>
+            <h2 className="font-heading text-espresso text-2xl font-bold mb-2">{tour.category === 'food' ? 'Tasting Menu' : 'The Itinerary'}</h2>
+            {tour.itineraryIntro && (
+              <p className="text-espresso-light leading-relaxed mb-4">{tour.itineraryIntro}</p>
+            )}
             <p className="text-sm text-muted mb-6">
               {tour.timeSlots ? 'Choose your preferred time, then tap each stop for details' : 'Tap each stop to see ingredients & details'}
             </p>

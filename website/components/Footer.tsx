@@ -10,6 +10,14 @@ function InstagramIcon() {
   )
 }
 
+function TikTokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+    </svg>
+  )
+}
+
 function WhatsAppIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -43,6 +51,10 @@ export default function Footer() {
               className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-terracotta transition-all" aria-label="Instagram">
               <InstagramIcon />
             </a>
+            <a href="https://www.tiktok.com/@saigonsstories" target="_blank" rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-terracotta transition-all" aria-label="TikTok">
+              <TikTokIcon />
+            </a>
           </div>
         </div>
 
@@ -71,7 +83,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-4 text-sm text-white/90">
             <li className="flex items-start gap-3">
               <MapPin size={16} className="mt-0.5 text-terracotta shrink-0" />
-              <span>Cao Thắng, Bàn Cờ,<br />Hồ Chí Minh 70000, Vietnam</span>
+              <span>No. 2/42F, Cao Thắng Street,<br />Bàn Cờ Ward, Hồ Chí Minh City</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={16} className="text-terracotta shrink-0" />
@@ -81,8 +93,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Mail size={16} className="text-terracotta shrink-0" />
-              <a href="mailto:hello@saigonstories.com" className="hover:text-terracotta transition-colors">
-                hello@saigonstories.com
+              <a href="mailto:saigonsstories@gmail.com" className="hover:text-terracotta transition-colors">
+                saigonsstories@gmail.com
               </a>
             </li>
             <li className="flex items-center gap-3">
@@ -93,10 +105,45 @@ export default function Footer() {
             </li>
           </ul>
 
-          <div className="mt-8 pt-6 border-t border-white/20 flex gap-2 flex-wrap">
-            {['PayPal', 'Visa', 'Cash'].map((m) => (
-              <span key={m} className="text-xs text-white/85 bg-white/20 px-2.5 py-1 rounded-full">{m}</span>
-            ))}
+        </div>
+      </div>
+
+      {/* Payment methods bar */}
+      <div className="border-t border-white/10 bg-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-xs font-bold text-white/50 uppercase tracking-widest">Ways you can pay</span>
+          <div className="flex items-center gap-3 flex-wrap justify-center">
+
+            {/* Visa */}
+            <div className="bg-white rounded-xl flex items-center justify-center px-5 py-2.5 h-12 min-w-20">
+              <svg viewBox="0 0 750 471" className="h-5" aria-label="Visa">
+                <path d="M278 334L311 137h52L330 334h-52zM524 141c-10-4-26-8-46-8-51 0-87 27-87 66 0 29 26 44 46 54 20 10 27 16 27 25 0 13-16 20-31 20-21 0-32-3-49-11l-7-3-7 44c12 5 34 10 57 10 54 0 88-27 89-68 0-23-14-40-44-54-18-9-29-15-29-24 0-8 9-17 29-17 17 0 29 4 38 8l5 2 7-44zM611 137h-40c-12 0-21 4-27 17L462 334h54l11-30h66l6 30h47L611 137zm-63 126l20-55 11 55h-31zM222 137l-50 134-5-27-18-92c-3-13-12-17-23-17h-82l-1 5c20 5 38 12 53 20l45 172h55l82-195h-56z" fill="#1434CB"/>
+              </svg>
+            </div>
+
+            {/* Mastercard */}
+            <div className="bg-white rounded-xl flex items-center justify-center px-5 py-2.5 h-12 min-w-20">
+              <svg viewBox="0 0 38 24" className="h-6" aria-label="Mastercard">
+                <circle cx="15" cy="12" r="10" fill="#EB001B"/>
+                <circle cx="23" cy="12" r="10" fill="#F79E1B"/>
+                <path d="M19 5.3a10 10 0 0 1 0 13.4A10 10 0 0 1 19 5.3z" fill="#FF5F00"/>
+              </svg>
+            </div>
+
+            {/* PayPal */}
+            <div className="bg-white rounded-xl flex items-center justify-center px-5 py-2.5 h-12 min-w-20">
+              <span className="font-black text-lg leading-none" style={{ color: '#003087' }}>Pay</span>
+              <span className="font-black text-lg leading-none" style={{ color: '#009cde' }}>Pal</span>
+            </div>
+
+            {/* Cash */}
+            <div className="bg-white rounded-xl flex items-center justify-center gap-1.5 px-5 py-2.5 h-12 min-w-20">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1A0F08" strokeWidth={1.8} className="w-5 h-5">
+                <rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/>
+              </svg>
+              <span className="font-bold text-sm text-espresso tracking-wide">Cash</span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -106,6 +153,7 @@ export default function Footer() {
           <span>© {new Date().getFullYear()} Saigon&apos;s Stories. All rights reserved.</span>
           <div className="flex items-center gap-5">
             <a href="https://www.instagram.com/saigons.stories/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.tiktok.com/@saigonsstories" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
             <a href="https://wa.me/84363252764" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
           </div>
         </div>

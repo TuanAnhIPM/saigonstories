@@ -14,10 +14,10 @@ const navLinks = [
 ]
 
 const tourDropdown = [
-  { href: '/tours/food-tour-scooter', label: '10 Food by Scooter' },
+  { href: '/tours/food-tour-scooter', label: 'Food Tour by Scooter' },
   { href: '/tours/walking-food-tour', label: 'Evening Walking Food Tour' },
-  { href: '/tours/history-culture',   label: 'History & Culture' },
-  { href: '/tours/taste-sightseeing', label: '7 Taste & Sightseeing' },
+  { href: '/tours/history-culture',   label: 'History & Culture by Scooter' },
+  { href: '/tours/taste-sightseeing', label: 'Bites & Sights by Scooter' },
 ]
 
 export default function Navbar() {
@@ -73,14 +73,16 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Right: Book a Tour */}
+          {/* Right: Book on WhatsApp */}
           <div className="ml-auto">
-            <Link
-              href="/contact"
+            <a
+              href="https://wa.me/84363252764"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-terracotta text-cream text-sm font-medium px-5 py-2.5 rounded-full hover:bg-terracotta-dark transition-colors whitespace-nowrap"
             >
-              Book a Tour
-            </Link>
+              Book on WhatsApp
+            </a>
           </div>
 
         </nav>
@@ -168,23 +170,25 @@ export default function Navbar() {
                 </Link>
 
                 <Link
-                  href="/contact"
+                  href="/blog"
                   onClick={close}
                   className="font-heading font-bold text-3xl text-espresso hover:text-terracotta transition-colors py-2"
                 >
-                  Contact
+                  Blog
                 </Link>
               </nav>
 
               {/* Drawer footer */}
               <div className="px-6 py-6 border-t border-sand/60">
-                <Link
-                  href="/contact"
+                <a
+                  href="https://wa.me/84363252764"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={close}
                   className="block bg-terracotta text-cream font-medium text-center px-5 py-3 rounded-full hover:bg-terracotta-dark transition-colors"
                 >
-                  Book a Tour
-                </Link>
+                  Book on WhatsApp
+                </a>
                 <p className="text-xs text-muted-light text-center mt-4">Ho Chi Minh City, Vietnam</p>
               </div>
             </motion.div>

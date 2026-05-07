@@ -77,8 +77,8 @@ export default function AboutPage() {
             <FadeIn direction="left" delay={0.1}>
               <p className="text-terracotta text-sm font-medium tracking-widest uppercase mb-4">Our Stories</p>
               <h2 className="font-heading text-espresso text-3xl md:text-4xl font-bold mb-6 leading-tight">The people behind every tour</h2>
-              <p className="text-muted leading-relaxed mb-5">Our guides aren&apos;t actors reading from a script. They&apos;re Saigon-born locals who grew up eating at these stalls, riding these streets, and learning the history from their grandparents.</p>
-              <p className="text-muted leading-relaxed mb-5">Jennie, Somi, Mango, Ryan, Vergil and the rest of the team each bring their own corner of the city to life — their stories become your stories.</p>
+              <p className="text-muted leading-relaxed mb-5">It started with an itch — a restless urge to share what we love most about this city with the people who travel thousands of kilometres to see it. Vietnamese cuisine, history, and culture are extraordinary, and we wanted foreigners to experience them the way we do: from the inside.</p>
+              <p className="text-muted leading-relaxed mb-5">Saigon&apos;s Stories is a team of young locals who grew up with these streets, these stalls, and these stories. We speak your language, we know every shortcut, and we genuinely love showing you the real Saigon — not the version in the guidebook.</p>
               <p className="text-muted leading-relaxed">When you join our tour, you&apos;re not buying a product. You&apos;re spending a few hours with someone who loves this city as much as you&apos;re about to.</p>
             </FadeIn>
             <FadeIn direction="right" delay={0.25}>
@@ -136,7 +136,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: 'Booking', items: ['50% deposit to confirm your booking', 'Remaining 50% after tour — cash, PayPal, or Visa/card', 'WhatsApp confirmation within hours'] },
-              { title: 'Cancellation', items: ['Cancel 24h+ in advance: full refund', 'Cancel 12h in advance: 50% charge', 'Cancel 5h in advance: 75% charge', 'Less than 5h: 100% charge'] },
+              { title: 'Cancellation', items: ['Cancel 24h+ in advance: full refund', 'Cancel 12h in advance: 50% charge'] },
               { title: 'Children', items: ['Under 4: free (1 per family)', 'Ages 5–10: 75% of adult price', 'Ages 11+: full adult price'] },
             ].map((card, i) => (
               <FadeIn key={card.title} delay={i * 0.1}>

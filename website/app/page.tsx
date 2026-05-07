@@ -225,6 +225,49 @@ export default function HomePage() {
             <p>Holiday surcharge of 25% applies on Jan 1, Apr 30, May 1, Sep 2 &amp; Dec 31.</p>
             <p>Lunar New Year: scooter tours not operated. Children under 4: free (1 per family).</p>
           </div>
+
+          {/* Payment methods */}
+          <AnimatedSection delay={0.3} className="mt-10">
+            <div className="flex flex-col items-center gap-4">
+              <p className="text-xs font-semibold text-muted uppercase tracking-widest">We accept</p>
+              <div className="flex items-center gap-3 flex-wrap justify-center">
+
+                {/* Cash */}
+                <div className="flex items-center gap-2 bg-white border border-sand rounded-xl px-4 py-2.5 shadow-sm">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 text-espresso-light">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/>
+                  </svg>
+                  <span className="text-xs font-bold text-espresso tracking-wide">CASH</span>
+                </div>
+
+                {/* PayPal */}
+                <div className="bg-white border border-sand rounded-xl px-4 py-2.5 shadow-sm flex items-center h-10">
+                  <span className="font-bold text-base" style={{ color: '#003087' }}>Pay</span>
+                  <span className="font-bold text-base" style={{ color: '#009cde' }}>Pal</span>
+                </div>
+
+                {/* Visa */}
+                <div className="bg-white border border-sand rounded-xl px-4 py-2.5 shadow-sm flex items-center h-10">
+                  <svg viewBox="0 0 750 471" className="h-5" aria-label="Visa">
+                    <rect width="750" height="471" rx="40" fill="white"/>
+                    <path d="M278 334L311 137h52L330 334h-52zM524 141c-10-4-26-8-46-8-51 0-87 27-87 66 0 29 26 44 46 54 20 10 27 16 27 25 0 13-16 20-31 20-21 0-32-3-49-11l-7-3-7 44c12 5 34 10 57 10 54 0 88-27 89-68 0-23-14-40-44-54-18-9-29-15-29-24 0-8 9-17 29-17 17 0 29 4 38 8l5 2 7-44zM611 137h-40c-12 0-21 4-27 17L462 334h54l11-30h66l6 30h47L611 137zm-63 126l20-55 11 55h-31zM222 137l-50 134-5-27-18-92c-3-13-12-17-23-17h-82l-1 5c20 5 38 12 53 20l45 172h55l82-195h-56z" fill="#1434CB"/>
+                  </svg>
+                </div>
+
+                {/* Mastercard */}
+                <div className="bg-white border border-sand rounded-xl px-4 py-2.5 shadow-sm flex items-center gap-1 h-10">
+                  <svg viewBox="0 0 38 24" className="h-5" aria-label="Mastercard">
+                    <circle cx="15" cy="12" r="10" fill="#EB001B"/>
+                    <circle cx="23" cy="12" r="10" fill="#F79E1B"/>
+                    <path d="M19 5.3a10 10 0 0 1 0 13.4A10 10 0 0 1 19 5.3z" fill="#FF5F00"/>
+                  </svg>
+                  <span className="text-xs font-bold text-espresso tracking-wide">Mastercard</span>
+                </div>
+
+              </div>
+              <p className="text-xs text-muted-light">50% deposit to confirm · Remaining 50% after tour</p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

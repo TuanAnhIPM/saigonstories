@@ -8,24 +8,27 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const slides = [
   {
-    src: '/images/food-tour/IMG_3449.JPG',
+    src: '/images/hero-3.JPG',
     alt: 'Motorbike tour through Saigon streets',
+    objectPos: 'object-top',
     eyebrow: 'Ho Chi Minh City, Vietnam',
-    line1: 'Start a New',
-    line2: 'Adventure',
-    sub: "Đi thôi (Let's go)! Put on the helmet, get on the motorbike and go with the flow!",
+    line1: 'See Saigon',
+    line2: 'Differently',
+    sub: 'Skip the tourist trail. We show you the city through its food, its history, and the people who call it home.',
   },
   {
-    src: '/images/food-tour/IMG_3452.JPG',
+    src: '/images/hero-1.JPG',
     alt: 'Street food tour in Saigon',
+    objectPos: 'object-center',
     eyebrow: 'Authentic Local Flavors',
     line1: 'Taste the',
     line2: 'Streets',
     sub: 'Slurp pho in a tiny alley, bite into bánh mì — discover the real Saigon on a plate.',
   },
   {
-    src: '/images/history-tour/IMG_3444.JPG',
+    src: '/images/hero-2.JPG',
     alt: 'Cultural history tour Saigon',
+    objectPos: 'object-center',
     eyebrow: "Saigon's Hidden Stories",
     line1: 'Explore Our',
     line2: 'Stories',
@@ -39,18 +42,28 @@ const fadeUp = (delay: number) => ({
   exit: { opacity: 0, y: -16, transition: { duration: 0.25 } },
 })
 
+// Split "Saigon's Stories" into letters for stagger animation
+const brandLetters = "Saigon's Stories".split('')
+
 export default function HeroSection() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [showIntro, setShowIntro] = useState(true)
 
   const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), [])
   const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), [])
 
+  // Dismiss intro after 3.2s
   useEffect(() => {
-    if (paused) return
+    const id = setTimeout(() => setShowIntro(false), 3200)
+    return () => clearTimeout(id)
+  }, [])
+
+  useEffect(() => {
+    if (paused || showIntro) return
     const id = setInterval(next, 5500)
     return () => clearInterval(id)
-  }, [paused, next])
+  }, [paused, showIntro, next])
 
   const slide = slides[current]
 
@@ -76,7 +89,7 @@ export default function HeroSection() {
             fill
             priority={current === 0}
             sizes="100vw"
-            className="object-cover object-center"
+            className={`object-cover ${slide.objectPos}`}
           />
         </motion.div>
       </AnimatePresence>
@@ -85,7 +98,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-linear-to-r from-black/65 via-black/30 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/60 to-transparent" />
 
-      {/* Text content */}
+      {/* Slideshow text */}
       <div className="relative z-10 flex flex-col justify-center h-full px-8 sm:px-16 max-w-3xl">
         <AnimatePresence mode="wait">
           <div key={`text-${current}`}>
@@ -167,6 +180,67 @@ export default function HeroSection() {
           Ride - Taste - Explore
         </p>
       </motion.div>
+
+      {/* ── Intro overlay ── */}
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-espresso"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.9, ease: 'easeInOut' } }}
+          >
+            {/* "Welcome to" */}
+            <motion.p
+              className="text-white/60 text-sm sm:text-base font-semibold tracking-[0.3em] uppercase mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              Welcome to
+            </motion.p>
+
+            {/* "Saigon's Stories" — letter by letter */}
+            <div
+              className="font-heading font-black text-cream flex flex-wrap justify-center"
+              style={{ fontSize: 'clamp(2.6rem, 7vw, 6rem)', lineHeight: 1.1 }}
+            >
+              {brandLetters.map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.7 + i * 0.045,
+                    duration: 0.4,
+                    ease: 'easeOut',
+                  }}
+                  style={{ display: char === ' ' ? 'inline-block' : undefined, width: char === ' ' ? '0.35em' : undefined }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+
+            {/* Thin divider line */}
+            <motion.div
+              className="mt-8 h-px bg-white/25"
+              initial={{ width: 0 }}
+              animate={{ width: '6rem' }}
+              transition={{ delay: 1.6, duration: 0.6 }}
+            />
+
+            {/* Tagline */}
+            <motion.p
+              className="mt-5 text-white/50 text-xs tracking-widest uppercase"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2, duration: 0.5 }}
+            >
+              Ride · Taste · Explore
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

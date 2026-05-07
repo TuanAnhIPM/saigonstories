@@ -2,184 +2,171 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const collage = [
-  { src: '/images/food-tour/IMG_3449.JPG', alt: 'Scooter ride through Saigon market' },
-  { src: '/images/history-tour/IMG_3444.JPG', alt: 'Happy guests on a Saigon tour' },
-  { src: '/images/food-tour/IMG_3452.JPG', alt: 'Couple enjoying Vietnamese noodle soup' },
+const slides = [
+  {
+    src: '/images/food-tour/IMG_3449.JPG',
+    alt: 'Motorbike tour through Saigon streets',
+    eyebrow: 'Ho Chi Minh City, Vietnam',
+    line1: 'Start a New',
+    line2: 'Adventure',
+    sub: "Đi thôi (Let's go)! Put on the helmet, get on the motorbike and go with the flow!",
+  },
+  {
+    src: '/images/food-tour/IMG_3452.JPG',
+    alt: 'Street food tour in Saigon',
+    eyebrow: 'Authentic Local Flavors',
+    line1: 'Taste the',
+    line2: 'Streets',
+    sub: 'Slurp pho in a tiny alley, bite into bánh mì — discover the real Saigon on a plate.',
+  },
+  {
+    src: '/images/history-tour/IMG_3444.JPG',
+    alt: 'Cultural history tour Saigon',
+    eyebrow: "Saigon's Hidden Stories",
+    line1: 'Explore Our',
+    line2: 'Stories',
+    sub: 'Uncover war history, colonial architecture and the soul of a city that never stops moving.',
+  },
 ]
 
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
+  exit: { opacity: 0, y: -16, transition: { duration: 0.25 } },
+})
+
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), [])
+  const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (window.scrollY < 80) {
-        const bottom = sectionRef.current?.offsetHeight ?? window.innerHeight
-        window.scrollTo({ top: bottom - 80, behavior: 'smooth' })
-      }
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [])
+    if (paused) return
+    const id = setInterval(next, 5500)
+    return () => clearInterval(id)
+  }, [paused, next])
+
+  const slide = slides[current]
 
   return (
-    <section ref={sectionRef} className="min-h-screen bg-cream flex items-center relative">
-      <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 pt-28 pb-16">
+    <section
+      className="relative h-screen w-full overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Background images with crossfade */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={`bg-${current}`}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
+        >
+          <Image
+            src={slide.src}
+            alt={slide.alt}
+            fill
+            priority={current === 0}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
+      </AnimatePresence>
 
-        {/* Left: Text */}
-        <div className="flex flex-col justify-center gap-8">
-          <div>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-r from-black/65 via-black/30 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/60 to-transparent" />
+
+      {/* Text content */}
+      <div className="relative z-10 flex flex-col justify-center h-full px-8 sm:px-16 max-w-3xl">
+        <AnimatePresence mode="wait">
+          <div key={`text-${current}`}>
             <motion.p
-              className="text-terracotta text-sm font-semibold tracking-widest uppercase mb-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              {...fadeUp(0)}
+              className="text-white! text-sm font-semibold tracking-widest uppercase mb-4"
             >
-              Ho Chi Minh City, Vietnam
+              {slide.eyebrow}
             </motion.p>
 
             <motion.h1
-              className="font-heading text-espresso font-black leading-none mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              style={{ fontSize: 'clamp(3rem, 6.5vw, 5.5rem)' }}
+              {...fadeUp(0.12)}
+              className="font-heading font-black text-white! leading-none mb-5"
+              style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}
             >
-              Welcome<br />
-              to{' '}
-              <span className="text-terracotta italic">Saigon</span>
+              {slide.line1}
+              <br />
+              <span className="text-white! italic">{slide.line2}</span>
             </motion.h1>
 
             <motion.p
-              className="text-espresso-light text-lg leading-relaxed max-w-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
+              {...fadeUp(0.24)}
+              className="text-white! text-base sm:text-lg leading-relaxed max-w-md mb-7"
             >
-              Authentic food, history and culture tours through Ho Chi Minh City&apos;s
-              hidden streets — led by guides who&apos;ve called this city home for generations.
+              {slide.sub}
             </motion.p>
+
+            <motion.div {...fadeUp(0.36)}>
+              <Link
+                href="/tours"
+                className="inline-block bg-white text-espresso font-bold px-8 py-3 uppercase tracking-widest text-sm hover:bg-terracotta hover:text-white transition-all duration-300"
+              >
+                View Tours
+              </Link>
+            </motion.div>
           </div>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            <Link
-              href="/tours"
-              className="bg-terracotta text-white font-semibold px-8 py-4 rounded-full hover:bg-terracotta-dark transition-all hover:scale-105 text-base shadow-md text-center"
-            >
-              Explore Our Tours
-            </Link>
-            <a
-              href="https://wa.me/84363252764"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-espresso/25 text-espresso font-semibold px-8 py-4 rounded-full hover:border-espresso/60 transition-all hover:scale-105 text-base text-center"
-            >
-              Book on WhatsApp
-            </a>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-          >
-            <span>⭐ 5.0 on TripAdvisor</span>
-            <span className="text-sand hidden sm:block">·</span>
-            <span>🛵 500+ happy guests</span>
-            <span className="text-sand hidden sm:block">·</span>
-            <span>📍 Ho Chi Minh City</span>
-          </motion.div>
-        </div>
-
-        {/* Right: Photo collage — desktop */}
-        <motion.div
-          className="hidden lg:grid gap-3 h-145"
-          style={{ gridTemplateColumns: '1.15fr 1fr', gridTemplateRows: '1fr 1fr' }}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          {/* Large photo spanning both rows */}
-          <div className="relative rounded-2xl overflow-hidden row-span-2 shadow-lg">
-            <Image
-              src={collage[0].src}
-              alt={collage[0].alt}
-              fill
-              priority
-              sizes="25vw"
-              className="object-cover"
-            />
-          </div>
-          {/* Top-right photo */}
-          <div className="relative rounded-2xl overflow-hidden shadow-lg">
-            <Image
-              src={collage[1].src}
-              alt={collage[1].alt}
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-          {/* Bottom-right photo */}
-          <div className="relative rounded-2xl overflow-hidden shadow-lg">
-            <Image
-              src={collage[2].src}
-              alt={collage[2].alt}
-              fill
-              sizes="20vw"
-              className="object-cover"
-            />
-          </div>
-        </motion.div>
-
-        {/* Mobile: single feature image */}
-        <motion.div
-          className="lg:hidden relative h-72 rounded-2xl overflow-hidden shadow-lg"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          <Image
-            src={collage[0].src}
-            alt={collage[0].alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </motion.div>
-
+        </AnimatePresence>
       </div>
 
-      {/* Bouncing scroll indicator */}
-      <motion.button
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-espresso/40 hover:text-terracotta transition-colors"
-        onClick={() => {
-          const bottom = sectionRef.current?.offsetHeight ?? window.innerHeight
-          window.scrollTo({ top: bottom - 80, behavior: 'smooth' })
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        aria-label="Scroll down"
+      {/* Arrow navigation */}
+      <button
+        onClick={prev}
+        aria-label="Previous slide"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors p-2"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={28} strokeWidth={1.5} />
-        </motion.div>
-      </motion.button>
+        <ChevronLeft size={36} strokeWidth={1.5} />
+      </button>
+      <button
+        onClick={next}
+        aria-label="Next slide"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors p-2"
+      >
+        <ChevronRight size={36} strokeWidth={1.5} />
+      </button>
 
+      {/* Dot indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${i === current ? 'bg-white w-6' : 'bg-white/45 w-2'}`}
+          />
+        ))}
+      </div>
+
+      {/* Ride · Taste · Explore tagline */}
+      <motion.div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 text-center whitespace-nowrap"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+      >
+        <p
+          className="text-white/90"
+          style={{ fontFamily: 'var(--font-script)', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
+        >
+          Ride - Taste - Explore
+        </p>
+      </motion.div>
     </section>
   )
 }

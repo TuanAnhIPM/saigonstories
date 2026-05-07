@@ -8,6 +8,7 @@ import TrustBar from '@/components/TrustBar'
 import AnimatedSection from '@/components/AnimatedSection'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
+import AboutUsTeaser from '@/components/AboutUsTeaser'
 
 const featuredTours = [
   tours.find((t) => t.slug === 'food-tour-scooter')!,
@@ -69,14 +70,14 @@ export default function HomePage() {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {featuredTours.map((tour, i) => (
-            <AnimatedSection key={tour.slug} delay={i * 0.15}>
+            <AnimatedSection key={tour.slug} delay={i * 0.15} className="h-full">
               <Link
                 href={`/tours/${tour.slug}`}
-                className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-56 shrink-0 overflow-hidden">
                   <Image
                     src={tour.heroImage}
                     alt={tour.title}
@@ -94,9 +95,9 @@ export default function HomePage() {
                     </div>
                   )}
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-heading text-espresso text-xl font-bold mb-2">{tour.title}</h3>
-                  <p className="text-muted text-sm mb-4 leading-relaxed">{tour.tagline}</p>
+                  <p className="text-muted text-sm mb-4 leading-relaxed flex-1">{tour.tagline}</p>
                   <div className="flex items-center justify-between text-sm text-muted-light">
                     <span className="flex items-center gap-1.5">
                       <Clock size={14} />
@@ -124,6 +125,9 @@ export default function HomePage() {
           </Link>
         </AnimatedSection>
       </section>
+
+      {/* ── About Us teaser ── */}
+      <AboutUsTeaser />
 
       {/* ── Why Us ── */}
       <section className="bg-sand-light py-24">
@@ -224,48 +228,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="relative py-28 overflow-hidden">
-        <Image
-          src="/images/food-tour/IMG_3452.JPG"
-          alt="Couple enjoying local Vietnamese food"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-espresso/70" />
-        <AnimatedSection className="relative z-10 text-center px-6">
-          <h2 className="font-heading text-cream text-4xl md:text-5xl font-bold mb-5">
-            Ready to taste Saigon?
-          </h2>
-          <p className="text-white/90 text-lg mb-10 max-w-xl mx-auto">
-            Get in touch via WhatsApp or our booking form — we&apos;ll sort the rest.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-terracotta text-cream font-medium px-8 py-4 rounded-full hover:bg-terracotta-dark transition-all hover:scale-105 text-lg shadow-lg"
-            >
-              Book a Tour
-            </Link>
-            <Link
-              href="/tours"
-              className="border-2 border-white/70 text-white font-semibold px-8 py-4 rounded-full hover:bg-cream/10 transition-all hover:scale-105 text-lg"
-            >
-              Browse Tours
-            </Link>
-          </div>
-        </AnimatedSection>
-      </section>
-
-      {/* ── FAQ ── */}
+{/* ── FAQ ── */}
       <FAQ />
 
       {/* ── Policies snippet ── */}
       <section className="max-w-4xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {[
-            { icon: '💳', title: '50% Deposit', body: 'Pay 50% to secure your booking. Balance due after the tour departs.' },
+            { icon: '💳', title: '50% Deposit', body: 'Pay 50% to confirm your booking. The remaining 50% is paid after the tour — by cash, PayPal, or card.' },
             { icon: '🔄', title: 'Free Cancellation', body: 'Cancel up to 24 hours in advance for a full refund. No questions asked.' },
             { icon: '🏨', title: 'Hotel Pickup', body: 'Free pickup from any hotel in Districts 1, 3 & 4. Other areas by arrangement.' },
           ].map((item, i) => (

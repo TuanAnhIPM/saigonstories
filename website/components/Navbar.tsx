@@ -1,151 +1,196 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { X, ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const navLinks = [
+  { href: '/',       label: 'Home' },
+  { href: '/tours',  label: 'All Tours' },
+  { href: '/about',  label: 'About Us' },
+  { href: '/contact',label: 'Contact' },
+]
 
 const tourDropdown = [
   { href: '/tours/food-tour-scooter', label: '10 Food by Scooter' },
   { href: '/tours/walking-food-tour', label: 'Evening Walking Food Tour' },
-  { href: '/tours/history-culture', label: 'History & Culture' },
+  { href: '/tours/history-culture',   label: 'History & Culture' },
   { href: '/tours/taste-sightseeing', label: '7 Taste & Sightseeing' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [toursOpen, setToursOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
+  // lock body scroll when menu open
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setToursOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
-  const linkClass = 'text-sm font-medium tracking-wide transition-colors hover:text-terracotta text-espresso-light'
+  const close = () => { setOpen(false); setToursOpen(false) }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-cream shadow-sm transition-all duration-300">
-      <nav className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="relative w-12 h-12">
-            <Image
-              src="/images/logo/LOGO CTY ĐÃ TÁCH NỀN.png"
-              alt="Saigon's Stories"
-              fill
-              sizes="48px"
-              className="object-contain"
-            />
-          </div>
-          <span
-            className="font-heading font-bold text-lg leading-tight text-espresso"
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-sand/60">
+        <nav className="relative h-18 flex items-center px-6">
+
+          {/* Left: hamburger + MENU */}
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            className="flex items-center gap-2.5 text-espresso hover:text-terracotta transition-colors group"
           >
-            Saigon&apos;s Stories
-          </span>
-        </Link>
+            {/* Hamburger lines */}
+            <span className="flex flex-col gap-1.5">
+              <span className="block w-6 h-0.5 bg-current transition-all" />
+              <span className="block w-4 h-0.5 bg-current group-hover:w-6 transition-all" />
+            </span>
+            <span className="text-xs font-bold tracking-[0.2em] uppercase hidden sm:block">Menu</span>
+          </button>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className={linkClass}>Home</Link>
+          {/* Divider */}
+          <span className="hidden sm:block w-px h-8 bg-sand mx-6" />
 
-          {/* Tours dropdown */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              className="flex items-center gap-1 text-sm font-medium tracking-wide transition-colors hover:text-terracotta text-espresso-light"
-              onClick={() => setToursOpen((v) => !v)}
-            >
-              Tours
-              <ChevronDown
-                size={14}
-                className={`transition-transform duration-200 ${toursOpen ? 'rotate-180' : ''}`}
+          {/* Center: Logo (absolute so it's truly centered) */}
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2.5"
+          >
+            <div className="relative w-28 h-28">
+              <Image
+                src="/images/logo/LOGO CTY ĐÃ TÁCH NỀN.png"
+                alt="Saigon's Stories"
+                fill
+                sizes="112px"
+                className="object-contain"
               />
-            </button>
-
-            {toursOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 bg-cream rounded-2xl shadow-xl border border-sand py-2 z-50">
-                <Link
-                  href="/tours"
-                  className="block px-5 py-2.5 text-xs font-semibold text-terracotta uppercase tracking-widest border-b border-sand mb-1"
-                  onClick={() => setToursOpen(false)}
-                >
-                  All Tours
-                </Link>
-                {tourDropdown.map((t) => (
-                  <Link
-                    key={t.href}
-                    href={t.href}
-                    className="block px-5 py-2.5 text-sm text-espresso-light hover:text-terracotta hover:bg-sand-light transition-colors"
-                    onClick={() => setToursOpen(false)}
-                  >
-                    {t.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <Link href="/about" className={linkClass}>About</Link>
-
-          <Link
-            href="/contact"
-            className="bg-terracotta text-cream text-sm font-medium px-5 py-2.5 rounded-full hover:bg-terracotta-dark transition-colors"
-          >
-            Book a Tour
+            </div>
+            <span className="font-heading font-bold text-base leading-tight text-espresso hidden sm:block">
+              Saigon&apos;s Stories
+            </span>
           </Link>
-        </div>
 
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden p-2 text-espresso"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      {/* Mobile drawer */}
-      {open && (
-        <div className="md:hidden bg-cream border-t border-sand px-6 py-6 flex flex-col gap-1">
-          <Link href="/" onClick={() => setOpen(false)} className="text-espresso-light font-medium text-lg py-2">Home</Link>
-
-          {/* Tours accordion */}
-          <div>
-            <button
-              className="flex items-center justify-between w-full text-espresso-light font-medium text-lg py-2"
-              onClick={() => setToursOpen((v) => !v)}
+          {/* Right: Book a Tour */}
+          <div className="ml-auto">
+            <Link
+              href="/contact"
+              className="bg-terracotta text-cream text-sm font-medium px-5 py-2.5 rounded-full hover:bg-terracotta-dark transition-colors whitespace-nowrap"
             >
-              Tours
-              <ChevronDown size={16} className={`transition-transform ${toursOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {toursOpen && (
-              <div className="pl-4 flex flex-col gap-1 pb-2">
-                <Link href="/tours" onClick={() => setOpen(false)} className="text-terracotta text-sm font-semibold py-1.5">All Tours →</Link>
-                {tourDropdown.map((t) => (
-                  <Link key={t.href} href={t.href} onClick={() => setOpen(false)} className="text-muted text-sm py-1.5 hover:text-terracotta">
-                    {t.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+              Book a Tour
+            </Link>
           </div>
 
-          <Link href="/about" onClick={() => setOpen(false)} className="text-espresso-light font-medium text-lg py-2">About</Link>
+        </nav>
+      </header>
 
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="bg-terracotta text-cream font-medium px-5 py-3 rounded-full text-center mt-3"
-          >
-            Book a Tour
-          </Link>
-        </div>
-      )}
-    </header>
+      {/* Full-screen overlay menu */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-60 bg-espresso/40 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={close}
+            />
+
+            {/* Drawer */}
+            <motion.div
+              className="fixed top-0 left-0 bottom-0 z-70 w-80 bg-cream flex flex-col"
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+            >
+              {/* Drawer header */}
+              <div className="flex items-center justify-between px-6 h-18 border-b border-sand/60">
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-muted">Menu</span>
+                <button onClick={close} aria-label="Close menu" className="text-espresso hover:text-terracotta transition-colors">
+                  <X size={22} />
+                </button>
+              </div>
+
+              {/* Nav links */}
+              <nav className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-1">
+                <Link
+                  href="/"
+                  onClick={close}
+                  className="font-heading font-bold text-3xl text-espresso hover:text-terracotta transition-colors py-2"
+                >
+                  Home
+                </Link>
+
+                {/* Tours expandable */}
+                <div>
+                  <button
+                    className="flex items-center justify-between w-full font-heading font-bold text-3xl text-espresso hover:text-terracotta transition-colors py-2"
+                    onClick={() => setToursOpen(v => !v)}
+                  >
+                    Tours
+                    <ChevronDown size={20} className={`transition-transform ${toursOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {toursOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden pl-4 flex flex-col gap-1 border-l-2 border-terracotta/30 ml-1 mb-2"
+                      >
+                        {tourDropdown.map(t => (
+                          <Link
+                            key={t.href}
+                            href={t.href}
+                            onClick={close}
+                            className="text-sm text-muted hover:text-terracotta transition-colors py-1.5"
+                          >
+                            {t.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <Link
+                  href="/about"
+                  onClick={close}
+                  className="font-heading font-bold text-3xl text-espresso hover:text-terracotta transition-colors py-2"
+                >
+                  About
+                </Link>
+
+                <Link
+                  href="/contact"
+                  onClick={close}
+                  className="font-heading font-bold text-3xl text-espresso hover:text-terracotta transition-colors py-2"
+                >
+                  Contact
+                </Link>
+              </nav>
+
+              {/* Drawer footer */}
+              <div className="px-6 py-6 border-t border-sand/60">
+                <Link
+                  href="/contact"
+                  onClick={close}
+                  className="block bg-terracotta text-cream font-medium text-center px-5 py-3 rounded-full hover:bg-terracotta-dark transition-colors"
+                >
+                  Book a Tour
+                </Link>
+                <p className="text-xs text-muted-light text-center mt-4">Ho Chi Minh City, Vietnam</p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

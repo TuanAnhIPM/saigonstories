@@ -149,7 +149,7 @@ export const tours: Tour[] = [
     title: 'History & Culture Tour',
     shortTitle: 'History & Culture',
     category: 'history',
-    badge: 'Local Favourite',
+    badge: 'Best Seller',
     tagline: 'Hidden apartments, weapon bunkers, flower markets — Saigon\'s layers of history come alive',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '08:30 AM', '09:00 AM', '12:30 PM', '01:00 PM', '05:00 PM', '05:30 PM'],

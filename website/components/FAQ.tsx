@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: 'How do I pay?',
-    a: 'Cash bookings require a 50% deposit to confirm, with the balance paid after the tour. If you prefer to pay by PayPal or Visa, full payment is required at the time of booking.',
+    a: 'Pay 50% upfront to confirm your booking. The remaining 50% is due after the tour completes — you can pay by cash, PayPal, or Visa/credit card.',
   },
   {
     q: 'Can you accommodate dietary restrictions?',

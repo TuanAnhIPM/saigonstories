@@ -69,7 +69,7 @@ export default function ContactPage() {
             <ul className="text-sm text-muted space-y-2.5 leading-relaxed">
               <li className="flex items-start gap-2">
                 <span className="text-terracotta font-bold mt-0.5">·</span>
-                50% deposit required to confirm your booking
+                50% deposit to confirm — remaining 50% after the tour (cash, PayPal, or Visa/card)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-terracotta font-bold mt-0.5">·</span>

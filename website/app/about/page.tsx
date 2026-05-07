@@ -135,7 +135,7 @@ export default function AboutPage() {
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: 'Booking', items: ['50% cash deposit to secure your booking', 'Full payment if booking via card / PayPal', 'WhatsApp confirmation within hours'] },
+              { title: 'Booking', items: ['50% deposit to confirm your booking', 'Remaining 50% after tour — cash, PayPal, or Visa/card', 'WhatsApp confirmation within hours'] },
               { title: 'Cancellation', items: ['Cancel 24h+ in advance: full refund', 'Cancel 12h in advance: 50% charge', 'Cancel 5h in advance: 75% charge', 'Less than 5h: 100% charge'] },
               { title: 'Children', items: ['Under 4: free (1 per family)', 'Ages 5–10: 75% of adult price', 'Ages 11+: full adult price'] },
             ].map((card, i) => (

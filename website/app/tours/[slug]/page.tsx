@@ -194,7 +194,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               <Link href="/contact" className="block bg-terracotta text-cream text-center font-medium px-6 py-3.5 rounded-full hover:bg-terracotta-dark transition-colors w-full">
                 Book This Tour
               </Link>
-              <p className="text-xs text-center text-muted mt-3">50% cash deposit · Free cancellation 24h+</p>
+              <p className="text-xs text-center text-muted mt-3">50% deposit to book · Balance after tour · Free cancellation 24h+</p>
             </div>
 
             {/* Ways to Pay */}
@@ -203,11 +203,11 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
               <ul className="text-sm text-muted space-y-2.5">
                 <li className="flex items-start gap-2">
                   <span className="text-terracotta font-bold mt-0.5">·</span>
-                  <span><strong className="text-espresso-light">Cash:</strong> 50% deposit to confirm, balance after tour</span>
+                  <span><strong className="text-espresso-light">Deposit:</strong> 50% upfront to confirm your booking</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-terracotta font-bold mt-0.5">·</span>
-                  <span><strong className="text-espresso-light">PayPal / Visa:</strong> Full payment required at booking</span>
+                  <span><strong className="text-espresso-light">After tour:</strong> Remaining 50% by cash, PayPal, or Visa/card</span>
                 </li>
               </ul>
               <div className="flex items-center gap-2 mt-4 pt-4 border-t border-sand">

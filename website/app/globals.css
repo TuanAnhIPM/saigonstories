@@ -16,6 +16,7 @@
 
   --font-heading: var(--font-playfair);
   --font-body: var(--font-inter);
+  --font-script: var(--font-script);
 }
 
 *, *::before, *::after {

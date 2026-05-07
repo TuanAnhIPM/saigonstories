@@ -2,8 +2,14 @@
 
 import { useState } from 'react'
 import { tours } from '@/lib/tours'
+import { AlertCircle, Loader2 } from 'lucide-react'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
+
+const inputClass =
+  'w-full rounded-xl border border-sand bg-white px-4 py-3 text-sm text-espresso placeholder:text-espresso-light/60 focus:outline-none focus:border-terracotta focus:ring-2 focus:ring-terracotta/15 transition-all'
+
+const labelClass = 'block text-sm font-semibold text-espresso mb-1.5'
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>('idle')
@@ -40,7 +46,7 @@ export default function ContactForm() {
       <div className="bg-sage/10 border border-sage/30 rounded-2xl p-10 text-center">
         <div className="text-5xl mb-4">🎉</div>
         <h3 className="font-heading text-espresso text-2xl font-bold mb-3">We got your message!</h3>
-        <p className="text-espresso-light/70">
+        <p className="text-espresso-light">
           We&apos;ll get back to you within a few hours — usually much sooner. Check WhatsApp too!
         </p>
       </div>
@@ -51,56 +57,35 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="name">
-            Full Name *
-          </label>
+          <label className={labelClass} htmlFor="name">Full Name *</label>
           <input
-            id="name"
-            name="name"
-            type="text"
-            required
+            id="name" name="name" type="text" required
             placeholder="Your name"
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso placeholder:text-espresso-light/40 focus:outline-none focus:border-terracotta transition-colors"
+            className={inputClass}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="email">
-            Email Address *
-          </label>
+          <label className={labelClass} htmlFor="email">Email Address *</label>
           <input
-            id="email"
-            name="email"
-            type="email"
-            required
+            id="email" name="email" type="email" required
             placeholder="you@example.com"
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso placeholder:text-espresso-light/40 focus:outline-none focus:border-terracotta transition-colors"
+            className={inputClass}
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="phone">
-            WhatsApp / Phone
-          </label>
+          <label className={labelClass} htmlFor="phone">WhatsApp / Phone</label>
           <input
-            id="phone"
-            name="phone"
-            type="tel"
+            id="phone" name="phone" type="tel"
             placeholder="+1 234 567 8900"
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso placeholder:text-espresso-light/40 focus:outline-none focus:border-terracotta transition-colors"
+            className={inputClass}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="guests">
-            Number of Guests *
-          </label>
-          <select
-            id="guests"
-            name="guests"
-            required
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso focus:outline-none focus:border-terracotta transition-colors"
-          >
+          <label className={labelClass} htmlFor="guests">Number of Guests *</label>
+          <select id="guests" name="guests" required className={inputClass}>
             <option value="">Select group size</option>
             <option value="1">1 person</option>
             <option value="2">2 people</option>
@@ -114,15 +99,8 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="tour">
-            Tour of Interest *
-          </label>
-          <select
-            id="tour"
-            name="tour"
-            required
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso focus:outline-none focus:border-terracotta transition-colors"
-          >
+          <label className={labelClass} htmlFor="tour">Tour of Interest *</label>
+          <select id="tour" name="tour" required className={inputClass}>
             <option value="">Select a tour</option>
             {tours.map((t) => (
               <option key={t.slug} value={t.slug}>{t.title}</option>
@@ -131,45 +109,48 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="date">
-            Preferred Date
-          </label>
+          <label className={labelClass} htmlFor="date">Preferred Date</label>
           <input
-            id="date"
-            name="date"
-            type="date"
-            className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso focus:outline-none focus:border-terracotta transition-colors"
+            id="date" name="date" type="date"
+            className={inputClass}
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-espresso-light mb-1.5" htmlFor="message">
-          Message
-        </label>
+        <label className={labelClass} htmlFor="message">Message</label>
         <textarea
-          id="message"
-          name="message"
-          rows={4}
+          id="message" name="message" rows={4}
           placeholder="Any dietary restrictions, special requests or questions?"
-          className="w-full rounded-xl border border-sand bg-cream px-4 py-3 text-sm text-espresso placeholder:text-espresso-light/40 focus:outline-none focus:border-terracotta transition-colors resize-none"
+          className={`${inputClass} resize-none`}
         />
       </div>
 
       {state === 'error' && (
-        <p className="text-red-600 text-sm">{errorMsg}</p>
+        <div className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+          <AlertCircle size={16} className="text-red-500 shrink-0 mt-0.5" />
+          <p className="text-sm text-red-700">{errorMsg}</p>
+        </div>
       )}
 
       <button
         type="submit"
         disabled={state === 'loading'}
-        className="bg-terracotta text-cream font-medium py-4 rounded-full hover:bg-terracotta-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-base"
+        className="flex items-center justify-center gap-2 bg-terracotta text-cream font-semibold py-4 rounded-full hover:bg-terracotta-dark transition-all hover:scale-[1.02] active:scale-100 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 text-base shadow-md"
       >
-        {state === 'loading' ? 'Sending…' : 'Send Booking Enquiry'}
+        {state === 'loading' ? (
+          <>
+            <Loader2 size={18} className="animate-spin" />
+            Sending…
+          </>
+        ) : 'Send Booking Enquiry'}
       </button>
 
-      <p className="text-xs text-center text-espresso-light/50">
-        We typically reply within 2 hours. Or reach us directly on WhatsApp.
+      <p className="text-sm text-center text-muted">
+        We typically reply within 2 hours. Or reach us directly on{' '}
+        <a href="https://wa.me/84363252764" target="_blank" rel="noopener noreferrer" className="text-terracotta font-medium hover:underline">
+          WhatsApp
+        </a>.
       </p>
     </form>
   )

@@ -49,7 +49,7 @@ export default function ToursPage() {
                   </div>
                 )}
                 <div className="absolute bottom-4 right-4">
-                  <span className="bg-white/95 text-espresso text-sm font-bold px-3 py-1.5 rounded-full shadow">
+                  <span className="bg-white/95 text-red-600 text-sm font-bold px-3 py-1.5 rounded-full shadow">
                     From ${tour.pricing[0].price}
                   </span>
                 </div>

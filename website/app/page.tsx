@@ -103,7 +103,7 @@ export default function HomePage() {
                       <Clock size={14} />
                       {tour.duration}
                     </span>
-                    <span className="text-terracotta font-semibold">
+                    <span className="text-red-600 font-semibold">
                       From ${tour.pricing[0].price}
                     </span>
                   </div>
@@ -211,9 +211,9 @@ export default function HomePage() {
                   ].map((row, i) => (
                     <tr key={row.name} className={i % 2 === 0 ? 'bg-cream' : 'bg-sand-light'}>
                       <td className="py-4 px-6 font-medium text-espresso">{row.name}</td>
-                      <td className="py-4 px-4 text-center text-espresso">{row.p1}</td>
-                      <td className="py-4 px-4 text-center text-espresso">{row.p2}</td>
-                      <td className="py-4 px-4 text-center text-terracotta font-medium hidden md:table-cell">{row.p3}</td>
+                      <td className="py-4 px-4 text-center text-red-600 font-semibold">{row.p1}</td>
+                      <td className="py-4 px-4 text-center text-red-600 font-semibold">{row.p2}</td>
+                      <td className="py-4 px-4 text-center text-red-600 font-medium hidden md:table-cell">{row.p3}</td>
                     </tr>
                   ))}
                 </tbody>

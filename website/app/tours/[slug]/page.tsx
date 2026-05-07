@@ -183,7 +183,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
                       <span className="text-sm text-espresso-light block">{tier.group}</span>
                       {tier.note && <span className="text-xs text-terracotta">{tier.note}</span>}
                     </div>
-                    <span className="font-semibold text-espresso shrink-0">${tier.price} <span className="text-xs font-normal text-muted-light">/ person</span></span>
+                    <span className="font-semibold text-red-600 shrink-0">${tier.price} <span className="text-xs font-normal text-muted-light">/ person</span></span>
                   </div>
                 ))}
               </div>

@@ -186,7 +186,7 @@ export const tours: Tour[] = [
       '/images/history-tour/IMG_3430.JPG',
     ],
     pricing: [
-      { group: '1–4 guests', price: 33 },
+      { group: '1–10 guests', price: 33 },
       { group: '11+ guests', price: 28, note: '15% group discount' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],
@@ -265,7 +265,7 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3491.PNG',
     ],
     pricing: [
-      { group: '1–4 guests', price: 38 },
+      { group: '1–10 guests', price: 38 },
       { group: '11+ guests', price: 32, note: '15% group discount' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],

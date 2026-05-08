@@ -96,7 +96,7 @@ export default function FloatingButtons() {
                 transition={{ duration: 0.3 }}
                 className="text-sm font-semibold whitespace-nowrap overflow-hidden"
               >
-                Chat with us
+                Book a Tour
               </motion.span>
             )}
           </AnimatePresence>

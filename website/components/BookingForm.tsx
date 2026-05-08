@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Calendar, ChevronDown } from 'lucide-react'
 
 const tours = [
   { name: 'Food Tour by Scooter',          icon: '🛵', time: '3.5–4 hrs · Morning / Afternoon / Evening' },
@@ -8,6 +10,119 @@ const tours = [
   { name: 'History & Culture by Scooter',   icon: '🏛️', time: '3.5–4 hrs · Morning / Afternoon / Evening' },
   { name: 'Bites & Sights by Scooter',      icon: '🌃', time: '3.5–4 hrs · Morning / Afternoon / Evening' },
 ]
+
+const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+function MiniCalendar({ value, onChange, minDate }: {
+  value: string; onChange: (v: string) => void; minDate: string
+}) {
+  const initRef = useRef(value ? new Date(value + 'T12:00:00') : new Date(minDate + 'T12:00:00'))
+  const [view, setView] = useState({ year: initRef.current.getFullYear(), month: initRef.current.getMonth() })
+
+  const min = new Date(minDate + 'T00:00:00')
+  min.setHours(0, 0, 0, 0)
+
+  const todayDate = new Date(minDate + 'T12:00:00')
+  const selected = value ? new Date(value + 'T12:00:00') : null
+  const { year, month } = view
+
+  const firstDayOfWeek = new Date(year, month, 1).getDay()
+  const daysInMonth = new Date(year, month + 1, 0).getDate()
+
+  const canPrev = year > todayDate.getFullYear() || (year === todayDate.getFullYear() && month > todayDate.getMonth())
+
+  const prevMonth = () => {
+    if (!canPrev) return
+    setView(v => { const d = new Date(v.year, v.month - 1, 1); return { year: d.getFullYear(), month: d.getMonth() } })
+  }
+  const nextMonth = () => {
+    setView(v => { const d = new Date(v.year, v.month + 1, 1); return { year: d.getFullYear(), month: d.getMonth() } })
+  }
+
+  const selectDate = (d: number) => {
+    const mm = String(month + 1).padStart(2, '0')
+    const dd = String(d).padStart(2, '0')
+    onChange(`${year}-${mm}-${dd}`)
+  }
+
+  const isDisabled = (d: number) => {
+    const cell = new Date(year, month, d)
+    cell.setHours(0, 0, 0, 0)
+    return cell < min
+  }
+
+  const isSelected = (d: number) =>
+    !!selected && selected.getFullYear() === year && selected.getMonth() === month && selected.getDate() === d
+
+  const isToday = (d: number) =>
+    todayDate.getFullYear() === year && todayDate.getMonth() === month && todayDate.getDate() === d
+
+  const cells: (number | null)[] = []
+  for (let i = 0; i < firstDayOfWeek; i++) cells.push(null)
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d)
+  while (cells.length % 7 !== 0) cells.push(null)
+
+  return (
+    <div className="p-4">
+      {/* Month navigation */}
+      <div className="flex items-center justify-between mb-4">
+        <button
+          type="button"
+          onClick={prevMonth}
+          disabled={!canPrev}
+          className="w-9 h-9 rounded-full flex items-center justify-center text-espresso hover:bg-sand transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <span className="text-sm font-bold text-espresso tracking-wide">
+          {MONTHS[month]} {year}
+        </span>
+        <button
+          type="button"
+          onClick={nextMonth}
+          className="w-9 h-9 rounded-full flex items-center justify-center text-espresso hover:bg-sand transition-all"
+        >
+          <ChevronRight size={18} />
+        </button>
+      </div>
+
+      {/* Day headers */}
+      <div className="grid grid-cols-7 mb-1">
+        {DAYS.map(d => (
+          <div key={d} className="text-center text-xs text-muted font-semibold py-1">{d}</div>
+        ))}
+      </div>
+
+      {/* Day grid */}
+      <div className="grid grid-cols-7">
+        {cells.map((d, i) => {
+          if (d === null) return <div key={`e-${i}`} />
+          const disabled = isDisabled(d)
+          const sel = isSelected(d)
+          const today = isToday(d)
+          return (
+            <button
+              key={d}
+              type="button"
+              disabled={disabled}
+              onClick={() => selectDate(d)}
+              className={`
+                aspect-square flex items-center justify-center text-sm rounded-full transition-all m-0.5
+                ${sel ? 'bg-terracotta text-white font-bold shadow-sm' : ''}
+                ${today && !sel ? 'border-2 border-terracotta text-terracotta font-semibold' : ''}
+                ${!sel && !disabled ? 'hover:bg-sand-light cursor-pointer' : ''}
+                ${disabled ? 'text-sand/60 cursor-not-allowed' : !sel ? 'text-espresso' : ''}
+              `}
+            >
+              {d}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 
 function WhatsAppIcon() {
   return (
@@ -49,6 +164,20 @@ export default function BookingForm() {
   const [children, setChildren] = useState(0)
   const [note, setNote] = useState('')
   const [touched, setTouched] = useState(false)
+  const [calOpen, setCalOpen] = useState(false)
+  const calRef = useRef<HTMLDivElement>(null)
+
+  const today = new Date().toISOString().split('T')[0]
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (calRef.current && !calRef.current.contains(e.target as Node)) {
+        setCalOpen(false)
+      }
+    }
+    if (calOpen) document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [calOpen])
 
   const isValid = tour && date
 
@@ -76,8 +205,6 @@ export default function BookingForm() {
 
     window.open(`https://wa.me/84363252764?text=${encodeURIComponent(lines.join('\n'))}`, '_blank')
   }
-
-  const today = new Date().toISOString().split('T')[0]
 
   return (
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
@@ -142,24 +269,50 @@ export default function BookingForm() {
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-terracotta text-cream text-xs mr-2">2</span>
             Pick a date
           </p>
-          <div className="relative">
-            <input
-              type="date"
-              min={today}
-              value={date}
-              onChange={e => setDate(e.target.value)}
-              className={`w-full rounded-xl border-2 px-4 py-3.5 text-sm text-espresso bg-white outline-none transition-all focus:ring-2 focus:ring-terracotta/30 cursor-pointer ${
-                touched && !date ? 'border-red-400 bg-red-50' : date ? 'border-terracotta' : 'border-sand hover:border-terracotta/50'
+
+          <div className="relative" ref={calRef}>
+            {/* Trigger button */}
+            <button
+              type="button"
+              onClick={() => setCalOpen(v => !v)}
+              className={`w-full rounded-xl border-2 px-4 py-3.5 text-sm text-left flex items-center gap-3 transition-all bg-white ${
+                touched && !date
+                  ? 'border-red-400 bg-red-50'
+                  : date
+                  ? 'border-terracotta bg-terracotta/5'
+                  : 'border-sand hover:border-terracotta/50'
               }`}
-            />
-            {formattedDate && (
-              <div className="mt-2 flex items-center gap-2 px-1">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-terracotta shrink-0">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
-                </svg>
-                <span className="text-sm font-medium text-terracotta">{formattedDate}</span>
-              </div>
-            )}
+            >
+              <Calendar size={16} className={date ? 'text-terracotta shrink-0' : 'text-muted shrink-0'} />
+              {date ? (
+                <span className="font-semibold text-terracotta">{formattedDate}</span>
+              ) : (
+                <span className="text-muted">Select a date</span>
+              )}
+              <ChevronDown
+                size={14}
+                className={`ml-auto text-muted transition-transform duration-200 ${calOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            {/* Calendar dropdown */}
+            <AnimatePresence>
+              {calOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                  transition={{ duration: 0.15, ease: 'easeOut' }}
+                  className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-sand z-20 overflow-hidden"
+                >
+                  <MiniCalendar
+                    value={date}
+                    onChange={v => { setDate(v); setCalOpen(false) }}
+                    minDate={today}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           {touched && !date && <p className="text-xs text-red-500 mt-1.5">Please pick a date</p>}
         </div>

@@ -103,8 +103,8 @@ export default function HomePage() {
                       <Clock size={14} />
                       {tour.duration}
                     </span>
-                    <span className="text-red-600 font-semibold">
-                      From ${tour.pricing[0].price}
+                    <span className="text-red-600 text-base font-black">
+                      ${tour.pricing[0].price}
                     </span>
                   </div>
                   <div className="mt-4 flex items-center gap-1 text-terracotta text-sm font-medium group-hover:gap-2 transition-all">

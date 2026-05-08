@@ -34,12 +34,13 @@ export default function AboutUsTeaser() {
         }}
       />
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto overflow-x-auto">
         <div
           className="grid gap-3"
           style={{
             gridTemplateColumns: '160px 1fr 1.4fr 1fr',
-            gridTemplateRows: '180px 200px 180px',
+            gridTemplateRows: '200px 220px 200px',
+            minWidth: '600px',
           }}
         >
           {/* Circle CTA */}
@@ -86,7 +87,7 @@ export default function AboutUsTeaser() {
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                 />
               </motion.div>
 

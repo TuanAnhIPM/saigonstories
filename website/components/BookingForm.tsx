@@ -3,10 +3,10 @@
 import { useState } from 'react'
 
 const tours = [
-  '10 Food by Scooter',
+  'Food Tour by Scooter',
   'Evening Walking Food Tour',
-  'History & Culture Tour',
-  '7 Taste & Sightseeing',
+  'History & Culture by Scooter',
+  'Bites & Sights by Scooter',
 ]
 
 function WhatsAppIcon() {
@@ -21,6 +21,7 @@ export default function BookingForm() {
   const [tour, setTour] = useState('')
   const [date, setDate] = useState('')
   const [guests, setGuests] = useState('2')
+  const [children, setChildren] = useState('0')
   const [note, setNote] = useState('')
   const [touched, setTouched] = useState(false)
 
@@ -40,6 +41,7 @@ export default function BookingForm() {
       `🗺 Tour: ${tour}`,
       `📅 Date: ${formattedDate}`,
       `👥 Guests: ${guests}`,
+      `🧒 Children: ${children}`,
       note ? `📝 Note: ${note}` : '',
       ``,
       `Please let me know availability and next steps. Thank you!`,
@@ -113,6 +115,20 @@ export default function BookingForm() {
               <option key={n} value={String(n)}>{n} {n === 1 ? 'guest' : 'guests'}</option>
             ))}
             <option value="10+">10+ guests</option>
+          </select>
+        </div>
+
+        {/* Children */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold text-espresso uppercase tracking-widest">Number of children</label>
+          <select
+            value={children}
+            onChange={e => setChildren(e.target.value)}
+            className={inputCls(children)}
+          >
+            {[0,1,2,3,4,5].map(n => (
+              <option key={n} value={String(n)}>{n === 0 ? 'No children' : `${n} ${n === 1 ? 'child' : 'children'}`}</option>
+            ))}
           </select>
         </div>
 

@@ -45,7 +45,7 @@ export type Tour = {
 export const tours: Tour[] = [
   {
     slug: 'food-tour-scooter',
-    title: 'Food Tour Itinerary by Scooter (Morning / Afternoon / Evening)',
+    title: 'Food Tour by Scooter (Morning / Afternoon / Evening)',
     shortTitle: 'Food Tour by Scooter',
     category: 'food',
     badge: 'Best Seller',
@@ -169,7 +169,7 @@ export const tours: Tour[] = [
   },
   {
     slug: 'history-culture',
-    title: 'History & Culture Itinerary by Scooter (Morning / Afternoon / Evening)',
+    title: 'History & Culture by Scooter (Morning / Afternoon / Evening)',
     shortTitle: 'History & Culture',
     category: 'history',
     badge: 'Best Seller',
@@ -248,7 +248,7 @@ export const tours: Tour[] = [
   },
   {
     slug: 'taste-sightseeing',
-    title: 'Saigon After Dark: Bites & Sights — 7 Food Tour & Sightseeing Itinerary by Scooter (Morning / Afternoon / Evening)',
+    title: 'Saigon After Dark: Bites & Sights — 7 Food Tour & Sightseeing by Scooter (Morning / Afternoon / Evening)',
     shortTitle: 'Bites & Sights by Scooter',
     category: 'combo',
     badge: "Editor's Pick",

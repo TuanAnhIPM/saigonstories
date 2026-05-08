@@ -114,6 +114,7 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3439.JPG',
     ],
     pricing: [
+      { group: '1 guest', price: 38, note: '+$8 solo supplement (~200,000 VND)' },
       { group: '2–10 guests', price: 38 },
       { group: '11+ guests', price: 32, note: '15% group discount' },
     ],

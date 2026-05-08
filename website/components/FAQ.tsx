@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: 'What is your cancellation policy?',
-    a: 'Cancel 24+ hours before: full refund. Cancel 12 hours before: 50% charge. Cancel 5 hours before: 75% charge. Less than 5 hours: 100% charge.',
+    a: 'Cancel 24+ hours before: full refund. Cancel 12 hours before: 50% charge.',
   },
   {
     q: 'Do you offer group discounts?',

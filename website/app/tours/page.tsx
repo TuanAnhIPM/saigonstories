@@ -45,10 +45,10 @@ export default function ToursPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 bg-linear-to-t from-espresso/70 to-transparent" />
-                      {tour.badge && (
+                      <div className="absolute inset-0 bg-linear-to-t from-espresso/30 to-transparent" />
+                      {(tour.badge === 'Best Seller' || tour.badge === 'Premium') && (
                         <div className="absolute top-0 left-0">
-                          <span className={`text-white text-xs font-black tracking-widest uppercase px-4 py-2.5 block leading-tight rounded-br-xl ${tour.badge === 'Premium' ? 'bg-amber-600' : tour.badge === "Editor's Pick" ? 'bg-terracotta' : 'bg-[#4a5a28]'}`}>
+                          <span className={`text-white text-xs font-black tracking-widest uppercase px-4 py-2.5 block leading-tight rounded-br-xl ${tour.badge === 'Premium' ? 'bg-amber-600' : 'bg-[#4a5a28]'}`}>
                             {tour.badge.split(' ').map((w, i) => <span key={i} className="block">{w}</span>)}
                           </span>
                         </div>

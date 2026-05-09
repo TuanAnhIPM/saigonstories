@@ -52,15 +52,10 @@ export default function ToursPage() {
                           </span>
                         </div>
                       )}
-                      <div className="absolute bottom-4 right-4 flex flex-col items-end gap-1">
+                      <div className="absolute bottom-4 right-4">
                         <span className="bg-white/95 text-red-600 text-base font-black px-3 py-1.5 rounded-full shadow">
                           ${adultTier.price}
                         </span>
-                        {childTier && (
-                          <span className="bg-white/90 text-espresso text-xs font-semibold px-2.5 py-1 rounded-full shadow">
-                            Child ${childTier.price}
-                          </span>
-                        )}
                       </div>
                     </div>
 

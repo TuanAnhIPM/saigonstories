@@ -72,6 +72,7 @@ export const tours: Tour[] = [
     pricing: [
       { group: '1–10 guests', price: 38 },
       { group: '11+ guests', price: 32, note: '15% group discount' },
+      { group: 'Children (5–10 yrs)', price: 28, note: '75% of adult price' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
@@ -162,9 +163,10 @@ export const tours: Tour[] = [
     pricing: [
       { group: '1 guest', price: 38, note: '+$8 solo supplement (~200,000 VND)' },
       { group: '2–10 guests', price: 38 },
-      { group: '11+ guests', price: 32, note: '15% group discount' },
+      { group: '11+ guests', price: 27, note: '30% group discount' },
+      { group: 'Children (5–10 yrs)', price: 28, note: '75% of adult price' },
     ],
-    groupDiscounts: ['15% discount for groups of 11+'],
+    groupDiscounts: ['30% discount for groups of 11+'],
     highlights: [
       'All food, drinks, and taxi fares included',
       'Free pickup and drop-off right at your hotel',
@@ -299,6 +301,7 @@ export const tours: Tour[] = [
     pricing: [
       { group: '1–10 guests', price: 33 },
       { group: '11+ guests', price: 28, note: '15% group discount' },
+      { group: 'Children (5–10 yrs)', price: 25, note: '75% of adult price' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
@@ -437,8 +440,9 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3491.PNG',
     ],
     pricing: [
-      { group: '1–10 guests', price: 38 },
-      { group: '11+ guests', price: 32, note: '15% group discount' },
+      { group: '1–10 guests', price: 34 },
+      { group: '11+ guests', price: 29, note: '15% group discount' },
+      { group: 'Children (5–10 yrs)', price: 25, note: '75% of adult price' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [
@@ -520,8 +524,9 @@ export const tours: Tour[] = [
       '/images/food-tour/IMG_3491.PNG',
     ],
     pricing: [
-      { group: '1–10 guests', price: 38 },
-      { group: '11+ guests', price: 32, note: '15% group discount' },
+      { group: '1–10 guests', price: 45 },
+      { group: '11+ guests', price: 38, note: '15% group discount' },
+      { group: 'Children (5–10 yrs)', price: 34, note: '75% of adult price' },
     ],
     groupDiscounts: ['15% discount for groups of 11+'],
     highlights: [

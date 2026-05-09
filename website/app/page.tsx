@@ -199,25 +199,28 @@ export default function HomePage() {
                     <th className="text-left py-4 px-6 font-heading font-semibold">Tour</th>
                     <th className="py-4 px-4 font-heading font-semibold text-center">1–10 guests</th>
                     <th className="py-4 px-4 font-heading font-semibold text-center">11+ guests</th>
+                    <th className="py-4 px-4 font-heading font-semibold text-center hidden sm:table-cell">Children<br/><span className="text-xs font-normal opacity-70">5–10 yrs · 75%</span></th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { name: 'Food Tour by Scooter',         p1: '$38', p2: '$32' },
-                    { name: 'Evening Walking Food Tour',     p1: '$38 *', p2: '$32' },
-                    { name: 'History & Culture by Scooter', p1: '$33', p2: '$28' },
-                    { name: 'Bites & Sights by Scooter',    p1: '$38', p2: '$32' },
+                    { name: 'Food Tour by Scooter',         p1: '$38', p2: '$32', disc: '−15%', chd: '$28' },
+                    { name: 'Walking Food Tour *',           p1: '$38', p2: '$27', disc: '−30%', chd: '$28' },
+                    { name: 'History & Culture by Scooter', p1: '$33', p2: '$28', disc: '−15%', chd: '$25' },
+                    { name: 'Bites & Sights by Scooter',    p1: '$34', p2: '$29', disc: '−15%', chd: '$25' },
+                    { name: 'Seafood & Rooftop Bar',         p1: '$45', p2: '$38', disc: '−15%', chd: '$34' },
                   ].map((row, i) => (
                     <tr key={row.name} className={i % 2 === 0 ? 'bg-cream' : 'bg-sand-light'}>
                       <td className="py-4 px-6 font-medium text-espresso">{row.name}</td>
                       <td className="py-4 px-4 text-center text-red-600 font-semibold">{row.p1}</td>
-                      <td className="py-4 px-4 text-center text-red-600 font-semibold">{row.p2} <span className="text-muted font-normal text-xs">(−15%)</span></td>
+                      <td className="py-4 px-4 text-center text-red-600 font-semibold">{row.p2} <span className="text-muted font-normal text-xs">({row.disc})</span></td>
+                      <td className="py-4 px-4 text-center text-red-600 font-semibold hidden sm:table-cell">{row.chd}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-muted-light mt-3 px-1">* Solo supplement of +$8 applies for 1 guest on the Evening Walking Food Tour.</p>
+            <p className="text-xs text-muted-light mt-3 px-1">* Walking Food Tour requires min. 2 guests. Solo supplement +$8 (~200,000 VND) applies for 1 guest. Children under 5: free (1 per family).</p>
           </AnimatedSection>
 
           <div className="mt-6 text-center text-xs text-muted-light space-y-1">

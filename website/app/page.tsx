@@ -16,15 +16,6 @@ const featuredTours = [
   tours.find((t) => t.slug === 'history-culture')!,
 ]
 
-const galleryImages = [
-  { src: '/images/food-tour/IMG_3452.JPG', alt: 'Couple enjoying Vietnamese noodle soup' },
-  { src: '/images/history-tour/IMG_3444.JPG', alt: 'Group at historical Saigon landmark' },
-  { src: '/images/food-tour/IMG_3435.JPG', alt: 'Street food spread at local eatery' },
-  { src: '/images/history-tour/e4fb2704-b390-4437-9a6a-a5de50823241.jpg', alt: 'Scooter ride through Saigon at night' },
-  { src: '/images/food-tour/IMG_3449.JPG', alt: 'Guests at iconic bánh mì stall' },
-  { src: '/images/food-tour/f4da75c6-584c-4d7c-b63b-67c6da5d92f1.jpg', alt: 'Evening street food experience' },
-]
-
 const whyUs = [
   {
     icon: '🛵',
@@ -149,32 +140,6 @@ export default function HomePage() {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Photo Gallery ── */}
-      <section className="max-w-6xl mx-auto px-6 py-24">
-        <AnimatedSection className="text-center mb-12">
-          <p className="text-terracotta text-sm font-medium tracking-widest uppercase mb-3">In the Streets</p>
-          <h2 className="font-heading text-espresso text-4xl md:text-5xl font-bold">Moments from our tours</h2>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {galleryImages.map((img, i) => (
-            <AnimatedSection
-              key={i}
-              delay={i * 0.08}
-              className={`relative overflow-hidden rounded-xl ${i === 0 || i === 5 ? 'aspect-3/4' : 'aspect-square'}`}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </AnimatedSection>
-          ))}
         </div>
       </section>
 

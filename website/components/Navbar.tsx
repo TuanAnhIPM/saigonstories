@@ -18,7 +18,7 @@ const tourDropdown = [
   { href: '/tours/walking-food-tour',         label: 'Evening Walking Food Tour' },
   { href: '/tours/history-culture',           label: 'History & Culture by Scooter' },
   { href: '/tours/taste-sightseeing',         label: 'Saigon After Dark: Bites & Sights' },
-  { href: '/tours/premium-seafood-rooftop',   label: 'Seafood & Rooftop Bar' },
+  { href: '/tours/premium-seafood-rooftop',   label: 'The Ultimate Saigon Food by Bike (Premium)' },
 ]
 
 export default function Navbar() {

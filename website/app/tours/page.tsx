@@ -43,7 +43,7 @@ export default function ToursPage() {
                         alt={tour.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className={`object-cover group-hover:scale-110 transition-transform duration-700 ${tour.slug === 'food-tour-scooter' ? 'object-top' : 'object-center'}`}
+                        className={`object-cover group-hover:scale-110 transition-transform duration-700 ${tour.slug === 'food-tour-scooter' ? 'object-[25%]' : 'object-center'}`}
                       />
                       {(tour.badge === 'Best Seller' || tour.badge === 'Premium') && (
                         <div className="absolute top-0 left-0">

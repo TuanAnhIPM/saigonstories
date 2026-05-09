@@ -126,7 +126,7 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
 
           {/* Tasting Menu / Time-slot stops */}
           <div>
-            <h2 className="font-heading text-espresso text-2xl font-bold mb-2">{tour.category === 'food' ? 'Tasting Menu' : 'The Itinerary'}</h2>
+            <h2 className="font-heading text-espresso text-2xl font-bold mb-2">{tour.category === 'history' ? 'The Itinerary' : 'Tasting Menu'}</h2>
             {!tour.itinerary && tour.itineraryIntro && (
               <p className="text-espresso-light leading-relaxed mb-4">{tour.itineraryIntro}</p>
             )}

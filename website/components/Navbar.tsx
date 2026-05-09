@@ -17,7 +17,7 @@ const tourDropdown = [
   { href: '/tours/food-tour-scooter',        label: 'Food Tour by Scooter' },
   { href: '/tours/walking-food-tour',         label: 'Evening Walking Food Tour' },
   { href: '/tours/history-culture',           label: 'History & Culture by Scooter' },
-  { href: '/tours/taste-sightseeing',         label: 'Bites & Sights by Scooter' },
+  { href: '/tours/taste-sightseeing',         label: 'Saigon After Dark: Bites & Sights' },
   { href: '/tours/premium-seafood-rooftop',   label: 'Seafood & Rooftop Bar' },
 ]
 

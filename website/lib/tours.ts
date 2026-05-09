@@ -13,6 +13,13 @@ export type TourStop = {
   ingredients?: string
 }
 
+export type ItineraryStop = {
+  number: number
+  title: string
+  description: string
+  foods: string[]
+}
+
 export type TimeSlot = {
   label: string
   departureTimes: string[]
@@ -34,6 +41,7 @@ export type Tour = {
   groupDiscounts: string[]
   highlights: string[]
   stops: TourStop[]
+  itinerary?: ItineraryStop[]
   timeSlots?: TimeSlot[]
   inclusions: string[]
   exclusions: string[]
@@ -84,6 +92,44 @@ export const tours: Tour[] = [
       { number: 8, title: '🤫 Secret Food', description: 'You\'ll have to join the tour to find out. All we can say is — it\'s one of the most unexpected and delightful bites of the evening. Your guide will tell you everything when you\'re there.', ingredients: 'Something you will know on the tour 🤫' },
       { number: 9, title: 'Bánh Mì', description: 'The icon. Vietnam\'s greatest contribution to the sandwich world.', ingredients: 'French baguette, pork sausage, ham, pickle, cucumber, fresh herbs' },
       { number: 10, title: 'Dessert', description: 'A sweet finale the Saigon way.', ingredients: 'Caramel flan, Vietnamese sweet soup, or coconut jelly' },
+    ],
+    itinerary: [
+      {
+        number: 1,
+        title: 'Sweet Awakening',
+        description: 'We depart from your hotel and head to District 3 to enjoy the delightful flavors of grilled banana wrapped in sticky rice, served with rich and creamy coconut milk. This sweet treat is the perfect way to awaken your taste buds and begin your culinary journey.',
+        foods: ['Grilled banana with sticky rice', 'Coconut milk'],
+      },
+      {
+        number: 2,
+        title: 'Soul of Vietnamese Cuisine',
+        description: 'Next, we move to our second destination to try a beloved local specialty. Here, you\'ll experience the true soul of the dish through the way it is carefully prepared, reflecting authentic Vietnamese cooking techniques and traditions.',
+        foods: ['Noodle soup (fish, pork, or vegetarian)', 'Fried rice flour cake (Bột Chiên)'],
+      },
+      {
+        number: 3,
+        title: 'Colors & Street Bites at Hồ Thị Kỷ',
+        description: 'We head to Hồ Thị Kỷ Flower Market — one of the largest flower markets in Hồ Chí Minh City. Take a relaxing stroll to aid digestion while filling your camera with vibrant, colorful snapshots of this lively local spot. Then we eat.',
+        foods: ['Grilled beef with betel leaves or lemongrass', 'Sweet potato balloons', 'Rice paper cracker', 'Vietnamese pizza', 'Summer roll', 'Sugar cane juice or kumquat tea'],
+      },
+      {
+        number: 4,
+        title: 'Sizzling Saigon Flavors',
+        description: 'There will be a lot of food on this tour, so we hope you still have room! Bánh Xèo is a savory Vietnamese crepe — bright yellow, crispy, filled with shrimp, pork, and vegetables, served with sweet chili and pickled sweet sauce for dipping. Grilled beef in caul fat wraps the beef in a thin layer that locks in juiciness and flavor — each bite is rich, slightly crispy on the outside, and irresistibly succulent inside.',
+        foods: ['Bánh Xèo (Vietnamese crispy pancake)', 'Grilled beef in caul fat'],
+      },
+      {
+        number: 5,
+        title: 'Bánh Mì & Local Cheers',
+        description: 'We enjoy Bánh mì — a beloved Vietnamese street food that is part of everyday life for locals thanks to its convenience and delicious flavor. This iconic sandwich perfectly captures the balance of taste and texture in Vietnamese cuisine. Then we raise a glass, learn how to cheer like a Vietnamese, and immerse ourselves in local life.',
+        foods: ['Bánh mì (Vietnamese baguette)', 'Local beer'],
+      },
+      {
+        number: 6,
+        title: 'Sweet Farewell',
+        description: 'To end the journey on a sweet note, we\'ll treat you to a classic Vietnamese dessert. It\'s the perfect way to unwind, savor the last flavors of Saigon, and reflect on your culinary adventure before we comfortably take you back to your hotel. We hope the flavors, stories, and moments shared will linger with you long after the journey ends — until we meet again in Saigon.',
+        foods: ['Caramel flan', 'Chè (Vietnamese sweet soup)', 'Coconut jelly'],
+      },
     ],
     inclusions: [
       'Raincoat & helmet',

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { Clock, Check, X, ArrowLeft, MapPin, Users } from 'lucide-react'
 import { tours, getTourBySlug } from '@/lib/tours'
 import TourStops from '@/components/TourStops'
+import TourItinerary from '@/components/TourItinerary'
 import TourTimeSelector from '@/components/TourTimeSelector'
 import TourImageSlideshow from '@/components/TourImageSlideshow'
 
@@ -111,10 +112,22 @@ export default async function TourDetailPage(props: PageProps<'/tours/[slug]'>) 
             </div>
           )}
 
-          {/* Stops — time slot selector or plain expandable list */}
+          {/* Itinerary — story stops (food tour only) */}
+          {tour.itinerary && tour.itinerary.length > 0 && (
+            <div>
+              <h2 className="font-heading text-espresso text-2xl font-bold mb-2">The Itinerary</h2>
+              {tour.itineraryIntro && (
+                <p className="text-espresso-light leading-relaxed mb-4">{tour.itineraryIntro}</p>
+              )}
+              <p className="text-sm text-muted mb-6">Tap each stop to read the full story</p>
+              <TourItinerary stops={tour.itinerary} />
+            </div>
+          )}
+
+          {/* Tasting Menu / Time-slot stops */}
           <div>
             <h2 className="font-heading text-espresso text-2xl font-bold mb-2">{tour.category === 'food' ? 'Tasting Menu' : 'The Itinerary'}</h2>
-            {tour.itineraryIntro && (
+            {!tour.itinerary && tour.itineraryIntro && (
               <p className="text-espresso-light leading-relaxed mb-4">{tour.itineraryIntro}</p>
             )}
             <p className="text-sm text-muted mb-6">

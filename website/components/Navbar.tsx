@@ -14,10 +14,11 @@ const navLinks = [
 ]
 
 const tourDropdown = [
-  { href: '/tours/food-tour-scooter', label: 'Food Tour by Scooter' },
-  { href: '/tours/walking-food-tour', label: 'Evening Walking Food Tour' },
-  { href: '/tours/history-culture',   label: 'History & Culture by Scooter' },
-  { href: '/tours/taste-sightseeing', label: 'Bites & Sights by Scooter' },
+  { href: '/tours/food-tour-scooter',        label: 'Food Tour by Scooter' },
+  { href: '/tours/walking-food-tour',         label: 'Evening Walking Food Tour' },
+  { href: '/tours/history-culture',           label: 'History & Culture by Scooter' },
+  { href: '/tours/taste-sightseeing',         label: 'Bites & Sights by Scooter' },
+  { href: '/tours/premium-seafood-rooftop',   label: 'Seafood & Rooftop Bar' },
 ]
 
 export default function Navbar() {

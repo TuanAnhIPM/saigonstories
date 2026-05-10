@@ -53,10 +53,10 @@ export type Tour = {
 export const tours: Tour[] = [
   {
     slug: 'food-tour-scooter',
-    title: 'Food Tour by Scooter (Morning / Afternoon / Evening)',
-    shortTitle: 'Food Tour by Scooter',
+    title: '10 Food Tour by Scooter (Morning / Afternoon / Evening)',
+    shortTitle: '10 Food Tour by Scooter',
     category: 'food',
-    badge: '',
+    badge: 'Best Seller',
     tagline: 'Taste Saigon\'s best street food from the back of a scooter',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '01:00 PM', '05:30 PM', '06:00 PM'],

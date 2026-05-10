@@ -251,18 +251,12 @@ export const tours: Tour[] = [
       },
       {
         number: 8,
-        title: 'Rice Paper Cracker',
-        description: 'Light and crunchy with a hint of coconut.',
-        ingredients: 'Rice paper · coconut milk',
-      },
-      {
-        number: 9,
         title: 'Bánh Mì',
         description: 'The icon. Vietnam\'s greatest contribution to the sandwich world.',
         ingredients: 'Wheat flour baguette · pork sausage · ham · pickle · cucumber · cilantro',
       },
       {
-        number: 10,
+        number: 9,
         title: 'Dessert',
         description: 'A sweet finale the Saigon way.',
         ingredients: 'Caramel flan · Vietnamese sweet soup (Chè) · or coconut jelly',
@@ -344,7 +338,7 @@ export const tours: Tour[] = [
           {
             number: 5,
             title: 'Spirit of Chinatown',
-            description: 'We drive through Chinatown and visit the Thiên Hậu Temple — a sacred center for the Chinese community in Saigon, playing an important role in the spiritual life of locals and possessing great cultural value. Incense spirals, intricate carvings, and a living tradition centuries in the making.',
+            description: 'We drive through Chinatown and visit the Nghĩa An Assembly Hall (aka Quan Yu Temple) — a sacred center for the Chinese community in Saigon, playing an important role in the spiritual life of locals and possessing great cultural value. Incense spirals, intricate carvings, and a living tradition centuries in the making.',
           },
         ],
       },

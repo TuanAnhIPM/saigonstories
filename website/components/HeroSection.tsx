@@ -8,9 +8,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const slides = [
   {
-    src: '/images/hero-3.JPG',
-    alt: 'Motorbike tour through Saigon streets',
-    objectPos: 'object-top',
+    src: '/images/see-saigon-differently.jpg',
+    alt: 'Group enjoying street food on a Saigon tour',
+    objectPos: 'object-center',
     eyebrow: 'Ho Chi Minh City, Vietnam',
     line1: 'See Saigon',
     line2: 'Differently',

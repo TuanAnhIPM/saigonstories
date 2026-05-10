@@ -56,7 +56,7 @@ export const tours: Tour[] = [
     title: 'Food Tour by Scooter (Morning / Afternoon / Evening)',
     shortTitle: 'Food Tour by Scooter',
     category: 'food',
-    badge: 'Best Seller',
+    badge: '',
     tagline: 'Taste Saigon\'s best street food from the back of a scooter',
     duration: '3.5 – 4 hours',
     departureTimes: ['08:00 AM', '01:00 PM', '05:30 PM', '06:00 PM'],
@@ -111,7 +111,7 @@ export const tours: Tour[] = [
         number: 3,
         title: 'Colors & Street Bites at Hồ Thị Kỷ',
         description: 'We head to Hồ Thị Kỷ Flower Market — one of the largest flower markets in Hồ Chí Minh City. Take a relaxing stroll to aid digestion while filling your camera with vibrant, colorful snapshots of this lively local spot. Then we eat.',
-        foods: ['Grilled beef with betel leaves or lemongrass', 'Sweet potato balloons', 'Rice paper cracker', 'Vietnamese pizza', 'Summer roll', 'Sugar cane juice or kumquat tea'],
+        foods: ['Grilled beef with betel leaves or lemongrass', 'Sweet potato balloons', 'Vietnamese pizza', 'Summer roll', 'Sugar cane juice or kumquat tea'],
       },
       {
         number: 4,
